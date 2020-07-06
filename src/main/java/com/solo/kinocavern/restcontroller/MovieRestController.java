@@ -3,6 +3,7 @@ package com.solo.kinocavern.restcontroller;
 import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.entity.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,11 +17,13 @@ public class MovieRestController {
     public MovieDAO movieDAO;
 
     @GetMapping("/movies")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public List<Movie> findAll() {
         return movieDAO.findAll();
     }
 
     @GetMapping("/movies/{movieId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Movie getMovie(@PathVariable int movieId) {
 
         Movie movie = movieDAO.findById(movieId);

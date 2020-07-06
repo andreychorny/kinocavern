@@ -14,13 +14,14 @@ import javax.validation.constraints.Size;
                 @UniqueConstraint(columnNames = "email")
         })
 public class User {
+
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name="id")
         private Long id;
 
         @NotBlank
-        @Size(max = 20)
+        @Size(min = 5, max = 20)
         @Column(name="username")
         private String username;
 
@@ -31,20 +32,26 @@ public class User {
         private String email;
 
         @NotBlank
-        @Size(max = 120)
+        @Size(min = 6 ,max = 60)
         @Column(name="password")
         private String password;
 
         @ManyToOne
-        @JoinColumn(name = "role_id")
+        @JoinColumn(name = "role_id",referencedColumnName="id")
         private Role role;
 
         public User() {
         }
 
-        public User(String username,
-                    String email,
-                    String password) {
+        public User(Long id, String username, String email, String password, Role role) {
+                this.id = id;
+                this.username = username;
+                this.email = email;
+                this.password = password;
+                this.role = role;
+        }
+
+        public User(String username, String email, String password) {
                 this.username = username;
                 this.email = email;
                 this.password = password;

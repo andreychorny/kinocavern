@@ -55,6 +55,5 @@ public class MovieDAOImpl implements MovieDAO {
         theQuery.setParameter("idDel", idDelete);
 
         theQuery.executeUpdate();
-
     }
 }
