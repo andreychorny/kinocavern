@@ -62,7 +62,6 @@ public class UserDAOImpl implements UserDAO {
                 "SELECT 1 FROM User u WHERE u.username = :searchedUsername");
         query.setParameter("searchedUsername", username);
         boolean exists = (query.uniqueResult() != null);
-        System.out.println(exists);
         return exists;
     }
 
@@ -74,7 +73,6 @@ public class UserDAOImpl implements UserDAO {
                 "SELECT 1 FROM User WHERE email = :searchedEmail");
         query.setParameter("searchedEmail", email);
         boolean exists = (query.uniqueResult() != null);
-        System.out.println(exists);
         return exists;
     }
 }
