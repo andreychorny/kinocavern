@@ -4,6 +4,7 @@ import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.entity.Movie;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,5 +56,14 @@ public class MovieDAOImpl implements MovieDAO {
         theQuery.setParameter("idDel", idDelete);
 
         theQuery.executeUpdate();
+    }
+
+    @Override
+    public Long getNextId(){
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query query =
+                currentSession.createSQLQuery("select nextval('movie.keySequence')")
+                        .addScalar("num", StandardBasicTypes.LONG);
+        return (Long) query.uniqueResult();
     }
 }

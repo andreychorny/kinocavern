@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
@@ -12,11 +12,18 @@ import { AuthenticationService } from './services/authentication.service';
 import { TokenStorageService } from './services/token-storage.service';
 import { authInterceptorProviders } from './interceptor/authentication.interceptor';
 import { HeaderComponent } from './components/header/header.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { AddMovieComponent } from './components/admin/add-movie/add-movie.component';
+import { UserRoleDirective } from './directives/user-role.directive';
+import { EditMovieComponent } from './components/admin/edit-movie/edit-movie.component';
 
 const routes = [
   { path: 'movielist', component: MovieListComponent },
   { path: 'signin', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
+  { path: 'admin/addMovie', component: AddMovieComponent},
+  { path: 'admin/editMovie/:id', component: EditMovieComponent},
+  { path: 'movie/:id', component: MovieDetailsComponent},
   { path: '', redirectTo: 'movielist', pathMatch: 'full' }];
 
 
@@ -26,7 +33,11 @@ const routes = [
     MovieListComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    MovieDetailsComponent,
+    AddMovieComponent,
+    UserRoleDirective,
+    EditMovieComponent
   ],
   imports: [
     BrowserModule,

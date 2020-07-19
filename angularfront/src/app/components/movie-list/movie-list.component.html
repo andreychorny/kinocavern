@@ -1,9 +1,13 @@
-<div class="container-fluid" >
-    <div class="row">
-        <div class="col-md-6" *ngFor="let movie of movies">
-            <p>
-                {{movie.id}},  {{movie.title}}, {{movie.country}}
-            </p>
+<div class="container-fluid">
+        <div class="row">
+            <div *ngFor="let movie of movies" class="col-md-3">
+                <div class="product-box">
+                    <a routerLink="/movie/{{ movie.id }}">
+                        <img src="{{ movie.imageUrl }}" class="img-responsive">
+                    </a>
+                    <h5>{{ movie.title }}</h5>
+                    <div class="year">{{movie.year}}</div>
+                </div>
+            </div>
         </div>
-    </div>
 </div>

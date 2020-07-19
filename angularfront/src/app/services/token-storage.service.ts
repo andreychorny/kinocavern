@@ -35,4 +35,9 @@ export class TokenStorageService {
   public getUser() {
     return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
+
+  hasRole(role: string) {
+    return this.isTokenExist() && this.getUser().roles.includes(role);
+}
+
 }

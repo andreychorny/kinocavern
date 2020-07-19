@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+      <div class="col-6">
+        <div class="card card-container align-self-center">
+          <form
+            *ngIf="!isSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate  
+          >
+            <h3 class="text-center text-info">Updating the movie</h3>
+            <div class="form-group">
+              <label for="movie.title">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                [(ngModel)]="movie.title"
+                required
+                maxlength="60"
+                #title="ngModel"
+                value="{{movie.title}}"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && title.invalid">
+                <div *ngIf="title.errors.required">Movie title is required</div>
+                <div *ngIf="title.errors.maxlength">
+                  Title must be no longer than 60 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="year">Year of release</label>
+              <input
+                type="number"
+                class="form-control"
+                name="year"
+                [(ngModel)]="movie.year"
+                required
+                #year="ngModel"
+                value="{{movie.year}}"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && year.invalid">
+                <div *ngIf="year.errors.required">Year of movie is required</div>
+              </div>
+            </div>
+          
+            <div class="form-group">
+              <button class="btn btn-primary btn-block">Update</button>
+            </div>
+      
+            <div class="alert alert-warning" *ngIf="f.submitted && isPostFailed">
+              Updating of movie failed!<br />{{ errorMessage }}
+            </div>
+          </form>
+      
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Movie successfuly updated!
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        Original image:
+        <img src="{{movie.imageUrl}}" class="detail-img">
+        Change image:
+        <form
+            *ngIf="!isSuccessful"
+            name="formImg"
+            (ngSubmit)="f.form.valid && onSubmitImg()"
+            #f="ngForm"
+            novalidate  
+          >
+            <div class="form-group">              
+              <label class="btn btn-default">
+                <input type="file" 
+                name="file"
+                (change)="selectFile($event)"
+                accept=".jpg,.png"
+                required/>
+              </label>              
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-block">Change image</button>
+            </div>
+        </form>
+      </div>
+  </div>
+</div>

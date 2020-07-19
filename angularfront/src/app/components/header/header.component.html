@@ -3,11 +3,11 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">KinoCavern</a>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Movie</a>
+              <a class="nav-link" routerLink="/movielist">Movie</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
@@ -22,7 +22,7 @@
               <a class="nav-link" href="#">Link</a>
             </li>
           </ul>
-          <a href="/signin" class="nav-link" routerLink="signin" 
+          <a class="nav-link" routerLink="/signin" 
             *ngIf="!tokenStorageService.isTokenExist(); else loggedOut">Login</a>
           <ng-template #loggedOut>
             <a class="nav-link" href="/" (click)="tokenStorageService.signOut()">Logout</a>

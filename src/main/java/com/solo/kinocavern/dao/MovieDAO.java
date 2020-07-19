@@ -14,4 +14,6 @@ public interface MovieDAO {
 
     public void deleteById(int id);
 
+    public Long getNextId();
+
 }

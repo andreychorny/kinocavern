@@ -16,34 +16,51 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0625405-b10b-4f1a-9e65-a6bfb9e38906" name="Default Changelist" comment="Added Spring Security and JWT logic">
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/login/login.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/login/login.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/login/login.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/login/login.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/register/register.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/register/register.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/register/register.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/register/register.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/interceptor/authentication.interceptor.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/interceptor/authentication.interceptor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/services/authentication.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/services/authentication.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/services/token-storage.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angularfront/src/app/services/token-storage.service.ts" afterDir="false" />
+    <list default="true" id="a0625405-b10b-4f1a-9e65-a6bfb9e38906" name="Default Changelist" comment="added Login/Registration in angular">
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/edit-movie/edit-movie.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/edit-movie/edit-movie.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/edit-movie/edit-movie.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/edit-movie/edit-movie.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/directives/user-role.directive.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/directives/user-role.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/18Greyhound.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/20gdsagdsa.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/21twqetweq.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/22hfshfsd.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/24gdasgdas.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dao/CategoryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dao/CountryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dao/GenreDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/CategoryDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/CountryDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/GenreDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Genre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/MovieFormWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularfront/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularfront/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angularfront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/common/movie.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/common/movie.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/auth/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/movie-list/movie-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/movie-list/movie-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/movie-list/movie-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/movie-list/movie-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/services/movie.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/services/movie.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/services/token-storage.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/services/token-storage.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dao/MovieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dao/MovieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/MovieDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/MovieDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Movie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/request/SignupRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/request/SignupRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/jwt/AuthTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/jwt/AuthTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/MovieRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/MovieRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <list id="28a0202e-e527-444d-8e15-6f1df05fbd5d" name="Revert &quot;set up initial state of project&quot;" comment="Revert &quot;set up initial state of project&quot;&#10;&#10;This reverts commit c195af23" />
     <list id="54a2d34f-c359-4131-bdf5-8754ab4d58d9" name="Revert &quot;set up initial state of project&quot;-3" comment="Revert &quot;set up initial state of project&quot;&#10;&#10;This reverts commit c7c834d0" />
@@ -163,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594065418141</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added Login/Registration in angular">
+      <created>1594316729761</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1594316729761</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,9 +224,14 @@
     <MESSAGE value="Revert &quot;Initial commit&quot;&#10;&#10;This reverts commit 72b37b97" />
     <MESSAGE value="Added User and Role tables, spring-security dependency" />
     <MESSAGE value="Added Spring Security and JWT logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Spring Security and JWT logic" />
+    <MESSAGE value="added Login/Registration in angular" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Login/Registration in angular" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="535" y="117" key="#Auto_Import" timestamp="1595195089814">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="535" y="117" key="#Auto_Import/0.0.1536.824@0.0.1536.824" timestamp="1595195089814" />
     <state x="525" y="215" width="450" height="397" key="#Notifications" timestamp="1593805659209">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -211,10 +240,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1593873202228" />
-    <state x="967" y="116" key="#com.intellij.ide.util.MemberChooser" timestamp="1593976077743">
+    <state x="967" y="116" key="#com.intellij.ide.util.MemberChooser" timestamp="1595197318921">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="967" y="116" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1593976077743" />
+    <state x="967" y="116" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1595197318921" />
     <state x="381" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1593967101488">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -243,22 +272,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="492" y="115" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593807655558" />
-    <state width="1493" height="239" key="GridCell.Tab.0.bottom" timestamp="1594248288297">
+    <state width="1493" height="243" key="GridCell.Tab.0.bottom" timestamp="1595198159850">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594248288297" />
-    <state width="1493" height="239" key="GridCell.Tab.0.center" timestamp="1594248288296">
+    <state width="1493" height="243" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595198159850" />
+    <state width="1493" height="243" key="GridCell.Tab.0.center" timestamp="1595198159850">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594248288296" />
-    <state width="1493" height="239" key="GridCell.Tab.0.left" timestamp="1594248288296">
+    <state width="1493" height="243" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595198159850" />
+    <state width="1493" height="243" key="GridCell.Tab.0.left" timestamp="1595198159849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594248288296" />
-    <state width="1493" height="239" key="GridCell.Tab.0.right" timestamp="1594248288297">
+    <state width="1493" height="243" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595198159849" />
+    <state width="1493" height="243" key="GridCell.Tab.0.right" timestamp="1595198159850">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="239" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594248288297" />
+    <state width="1493" height="243" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595198159850" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1593906321018">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -287,10 +316,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593873552665" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1594065453628">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1594317588662">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1594065453628" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1594317588662" />
     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593805702906">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -299,10 +328,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1593882901764" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1593975547861">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1595189059430">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1593975547861" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1595189059430" />
     <state x="425" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1593969990271">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -1,0 +1,8 @@
+.container-fluid{
+    padding: 20px;
+}
+img {
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 2%;
+  } 
