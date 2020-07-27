@@ -28,7 +28,6 @@ public class Movie {
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="category_id")
-    @JsonManagedReference
     private Category category;
 
     @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
@@ -38,7 +37,6 @@ public class Movie {
             joinColumns=@JoinColumn(name="movie_id"),
             inverseJoinColumns=@JoinColumn(name="country_id")
     )
-    @JsonManagedReference
     private List<Country> countries;
 
     @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
@@ -48,7 +46,6 @@ public class Movie {
             joinColumns=@JoinColumn(name="movie_id"),
             inverseJoinColumns=@JoinColumn(name="genre_id")
     )
-    @JsonManagedReference
     private List<Genre> genres;
 
 
@@ -56,12 +53,15 @@ public class Movie {
 
     }
 
-    public Movie(int id, String title, int year, String imageUrl, Category category) {
+    public Movie(int id, String title, int year, String imageUrl, Category category,
+                 List<Country> countries, List<Genre> genres) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.imageUrl = imageUrl;
         this.category = category;
+        this.countries = countries;
+        this.genres = genres;
     }
 
     public int getId() {

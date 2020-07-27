@@ -10,7 +10,10 @@ import { MovieService } from '../../services/movie.service';
 export class MovieListComponent implements OnInit {
 
   movies: Movie[];
+  amountOfElements: number;
 
+  pageNumber = 1;
+  pageSize = 12;
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
@@ -18,10 +21,13 @@ export class MovieListComponent implements OnInit {
   }
 
   listOfMovies(){
-    this.movieService.getMovieList().subscribe(
+    const pageNumber = this.pageNumber - 1;
+    this.movieService.getMovieList(pageNumber).subscribe(
       data => {
-        this.movies = data;
+        this.movies = data["movies"];
+        this.amountOfElements = data["amountOfElements"];
       }
     );
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 }

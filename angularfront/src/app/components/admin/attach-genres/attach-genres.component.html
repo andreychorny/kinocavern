@@ -1,0 +1,13 @@
+<div class="container">
+    <h4>Genres</h4>
+    <form>
+        <div class="row" *ngFor="let genre of genres">
+            <label class="genreCheck">{{genre.name}}
+                <input type="checkbox" value="genre.id" 
+                [checked]="checkedGenresIds.includes(genre.id)"
+                (change)="onCheck(genre)">
+                <span class="checkmark"></span>
+              </label>              
+        </div>
+    </form>
+</div>

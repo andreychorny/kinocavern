@@ -38,4 +38,13 @@ public class GenreDAOImpl implements GenreDAO {
         Session currentSession = entityManager.unwrap(Session.class);
         currentSession.saveOrUpdate(genre);
     }
+
+
+    @Override
+    public List<Genre> findByIds(List<Integer> ids){
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query query = currentSession.createQuery("from Genre where id IN :idList");
+        query.setParameterList("idList", ids);
+        return  query.list();
+    }
 }

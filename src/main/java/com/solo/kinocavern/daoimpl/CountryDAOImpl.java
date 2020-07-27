@@ -40,4 +40,12 @@ public class CountryDAOImpl implements CountryDAO {
         currentSession.saveOrUpdate(country);
 
     }
+
+    @Override
+    public List<Country> findByIds(List<Integer> ids){
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query query = currentSession.createQuery("from Country where id IN :idList");
+        query.setParameterList("idList", ids);
+        return  query.list();
+    }
 }

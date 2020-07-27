@@ -16,6 +16,10 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { AddMovieComponent } from './components/admin/add-movie/add-movie.component';
 import { UserRoleDirective } from './directives/user-role.directive';
 import { EditMovieComponent } from './components/admin/edit-movie/edit-movie.component';
+import { AttachGenresComponent } from './components/admin/attach-genres/attach-genres.component';
+import { AttachCountriesComponent } from './components/admin/attach-countries/attach-countries.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 const routes = [
   { path: 'movielist', component: MovieListComponent },
@@ -37,12 +41,15 @@ const routes = [
     MovieDetailsComponent,
     AddMovieComponent,
     UserRoleDirective,
-    EditMovieComponent
+    EditMovieComponent,
+    AttachGenresComponent,
+    AttachCountriesComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
     RouterModule.forRoot(routes)
   ],
   providers: [MovieService, AuthenticationService, TokenStorageService, 

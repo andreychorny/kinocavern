@@ -22,6 +22,8 @@
               <a class="nav-link" href="#">Link</a>
             </li>
           </ul>
+          <a class="nav-link" routerLink="/admin/addMovie" *appUserRole="'ROLE_ADMIN'">
+            Add movie</a>
           <a class="nav-link" routerLink="/signin" 
             *ngIf="!tokenStorageService.isTokenExist(); else loggedOut">Login</a>
           <ng-template #loggedOut>

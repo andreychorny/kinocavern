@@ -5,6 +5,10 @@ import com.solo.kinocavern.dao.CountryDAO;
 import com.solo.kinocavern.dao.GenreDAO;
 import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.entity.*;
+import com.solo.kinocavern.service.CategoryService;
+import com.solo.kinocavern.service.CountryService;
+import com.solo.kinocavern.service.GenreService;
+import com.solo.kinocavern.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +19,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -23,26 +29,32 @@ import java.util.List;
 public class MovieRestController {
 
     @Autowired
-    public MovieDAO movieDAO;
+    public MovieService movieService;
 
     @Autowired
-    public CategoryDAO categoryDAO;
+    public CategoryService categoryService;
 
     @Autowired
-    public GenreDAO genreDAO;
+    public GenreService genreService;
 
     @Autowired
-    public CountryDAO countryDAO;
+    public CountryService countryService;
 
     @GetMapping("/movies")
-    public List<Movie> findAll() {
-        return movieDAO.findAll();
+    public Map<String, Object> findAll(@RequestParam("page") Integer pageNumber) {
+        List<Movie> movies = movieService.findAllByPage(pageNumber);
+        Long amountOfElements = movieService.findAmountOfElements();
+        Map<String, Object> results = new HashMap<>();
+        results.put("movies", movies);
+        results.put("amountOfElements", amountOfElements);
+        return results;
     }
+
 
     @GetMapping("/movies/{movieId}")
     public Movie getMovie(@PathVariable int movieId) {
 
-        Movie movie = movieDAO.findById(movieId);
+        Movie movie = movieService.findById(movieId);
 
         if (movie == null) {
             throw new RuntimeException("Movie id not found - " + movieId);
@@ -55,35 +67,15 @@ public class MovieRestController {
     @RequestMapping(value = "/movies", consumes = "multipart/form-data")
     public Movie addMovie(@RequestPart("uploadFile") MultipartFile file,
                           @RequestPart("info") MovieFormWrapper model) throws IOException {
-        String title = model.getTitle();
-        System.out.println(title);
-        List<Country> countries = new ArrayList<>();
-        countries.add(countryDAO.findById(1));
-        List<Genre> genres = new ArrayList<>();
-        genres.add(genreDAO.findById(1));
-        Movie movie = new Movie();
-        movie.setId(0);
-        movie.setTitle(title);
-        movie.setYear(model.getYear());
-        Category category = categoryDAO.findById(1);
-        System.out.println("!!!!!!"+category.getName());
-        System.out.println(movie.getTitle());
-        movie.setCategory(categoryDAO.findById(1));
-        movie.setCountries(countries);
-        movie.setGenres(genres);
-        movieDAO.save(movie);
 
-        String imgUrl = "assets\\movies\\titleImg\\"+movie.getId()+movie.getTitle()+".jpg";
-        Files.copy(file.getInputStream(), Paths.get("angularfront\\src\\"+imgUrl));
-        movie.setImageUrl(imgUrl);
-        movieDAO.save(movie);
-        return movie;
+        Movie savedMovie = movieService.addNewMovie(model);
+        movieService.saveImage(file, savedMovie.getImageUrl());
+        return savedMovie;
     }
 
     @PutMapping("/movies")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Movie updateMovie(@RequestBody Movie movie) {
-        movieDAO.save(movie);
+        movieService.save(movie);
         return movie;
     }
 
@@ -91,8 +83,7 @@ public class MovieRestController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updateMovieImg(@RequestParam(value="file") MultipartFile file,
                                  @RequestParam("imgUrl") String imgUrl) throws IOException {
-        Files.copy(file.getInputStream(), Paths.get("angularfront\\src\\"+imgUrl),
-                StandardCopyOption.REPLACE_EXISTING);
+        movieService.saveImage(file, imgUrl);
         return "Title image successfully updated";
     }
 
@@ -100,14 +91,7 @@ public class MovieRestController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteMovie(@PathVariable int movieId) {
 
-        Movie tempMovie = movieDAO.findById(movieId);
-
-        if (tempMovie == null) {
-            throw new RuntimeException("Movie id not found - " + movieId);
-        }
-        File file = new File("angularfront\\src\\"+tempMovie.getImageUrl());
-        if (file!=null) file.delete();
-        movieDAO.deleteById(movieId);
+        movieService.deleteById(movieId);
 
         return "Deleted movie id - " + movieId;
     }

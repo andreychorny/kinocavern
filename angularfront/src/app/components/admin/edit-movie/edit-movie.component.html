@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="movie != null">
   <div class="row">
       <div class="col-6">
         <div class="card card-container align-self-center">
@@ -44,19 +44,36 @@
                 <div *ngIf="year.errors.required">Year of movie is required</div>
               </div>
             </div>
-          
+            <div class="form-group">
+              <select class="box" name="category" [(ngModel)]="selectedCategory">
+                <option *ngFor="let category of categories" 
+                        [ngValue]="category">
+                  {{category.name}}
+                </option>
+              </select>           
+            </div>
             <div class="form-group">
               <button class="btn btn-primary btn-block">Update</button>
             </div>
       
             <div class="alert alert-warning" *ngIf="f.submitted && isPostFailed">
-              Updating of movie failed!<br />{{ errorMessage }}
+              Updating of movie details failed!<br />{{ errorMessage }}
             </div>
           </form>
       
           <div class="alert alert-success" *ngIf="isSuccessful">
             Movie successfuly updated!
           </div>
+        </div>
+        <div class="row" >
+            <div class="col-6">
+              <app-attach-genres [movieGenres]="movie.genres">
+              </app-attach-genres>
+            </div>
+            <div class="col-6">
+              <app-attach-countries [movieCountries]="movie.countries">
+              </app-attach-countries>
+            </div> 
         </div>
       </div>
       <div class="col-6">

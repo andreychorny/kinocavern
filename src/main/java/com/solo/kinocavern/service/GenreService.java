@@ -1,10 +1,10 @@
-package com.solo.kinocavern.dao;
+package com.solo.kinocavern.service;
 
 import com.solo.kinocavern.entity.Genre;
 
 import java.util.List;
 
-public interface GenreDAO {
+public interface GenreService {
 
     public List<Genre> findAll();
 

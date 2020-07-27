@@ -21,7 +21,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     public List<Category> findAll() {
         Session currentSession = entityManager.unwrap(Session.class);
         Query<Category> query =
-                currentSession.createQuery("from Category c", Category.class);
+                currentSession.createQuery("from Category", Category.class);
         List<Category> categories = query.getResultList();
         return categories;
     }

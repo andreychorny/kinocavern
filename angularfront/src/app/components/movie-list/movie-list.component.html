@@ -1,13 +1,27 @@
 <div class="container-fluid">
-        <div class="row">
-            <div *ngFor="let movie of movies" class="col-md-3">
-                <div class="product-box">
-                    <a routerLink="/movie/{{ movie.id }}">
-                        <img src="{{ movie.imageUrl }}" class="img-responsive">
-                    </a>
+    <div class="row">
+        <div *ngFor="let movie of movies" class="col-md-3">
+            <div class="product-box">
+                <a routerLink="/movie/{{ movie.id }}">
+                    <img src="{{ movie.imageUrl }}" class="img-responsive">
+                </a>
+                <a routerLink="/movie/{{ movie.id }}">
                     <h5>{{ movie.title }}</h5>
-                    <div class="year">{{movie.year}}</div>
-                </div>
+                </a>
+                <div class="year">{{movie.year}}</div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9" style="padding-left: 30%">
+                            
+            <ngb-pagination [(page)]="pageNumber"
+                            [pageSize]="pageSize"
+                            [collectionSize]="amountOfElements"
+                            (pageChange)="listOfMovies()">
+
+            </ngb-pagination>
+        </div>
+    </div>
+
 </div>
