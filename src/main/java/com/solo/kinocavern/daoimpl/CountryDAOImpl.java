@@ -28,7 +28,7 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
-    public Country findById(int id) {
+    public Country findById(Long id) {
         Session currentSession = entityManager.unwrap(Session.class);
         Country country = currentSession.get(Country.class, id);
         return country;
@@ -42,7 +42,7 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
-    public List<Country> findByIds(List<Integer> ids){
+    public List<Country> findByIds(List<Long> ids){
         Session currentSession = entityManager.unwrap(Session.class);
         Query query = currentSession.createQuery("from Country where id IN :idList");
         query.setParameterList("idList", ids);

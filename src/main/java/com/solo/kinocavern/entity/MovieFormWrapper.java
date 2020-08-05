@@ -5,11 +5,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public class MovieFormWrapper {
+
     private String title;
     private Integer year;
-    private List<Integer> genresIds;
-    private List<Integer> countriesIds;
-    private Integer categoryId;
+    private List<Long> genresIds;
+    private List<Long> countriesIds;
+    private Long categoryId;
 
     public String getTitle() {
         return title;
@@ -27,27 +28,27 @@ public class MovieFormWrapper {
         this.year = year;
     }
 
-    public List<Integer> getGenresIds() {
+    public List<Long> getGenresIds() {
         return genresIds;
     }
 
-    public void setGenresIds(List<Integer> genresIds) {
+    public void setGenresIds(List<Long> genresIds) {
         this.genresIds = genresIds;
     }
 
-    public List<Integer> getCountriesIds() {
+    public List<Long> getCountriesIds() {
         return countriesIds;
     }
 
-    public void setCountriesIds(List<Integer> countriesIds) {
+    public void setCountriesIds(List<Long> countriesIds) {
         this.countriesIds = countriesIds;
     }
 
-    public Integer getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
 }

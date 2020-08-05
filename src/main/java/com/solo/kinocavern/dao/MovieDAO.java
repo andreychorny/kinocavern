@@ -9,15 +9,18 @@ public interface MovieDAO {
 
     public List<Movie> findAll();
 
-    public List<Movie> findAllByPage(int pageNumber);
+    public List<Movie> findAllByParams(int pageNumber, String orderBy, Long categoryId,
+                                       Long genreId);
 
     public Long findAmountOfElements();
 
-    public Movie findById(int id);
+    public Long findAmountOfElementsInSearchByParams(Long categoryId, Long genreId);
+
+    public Movie findById(Long id);
 
     public Movie save(Movie movie);
 
-    public void deleteById(int id);
+    public void deleteById(Long id);
 
 //    public List<Country> findCountriesById(Integer id);
 }

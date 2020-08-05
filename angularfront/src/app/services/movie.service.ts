@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Movie } from '../common/movie';
@@ -21,9 +21,14 @@ export class MovieService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getMovieList(pageNumber: number): Observable<Movie[]> {
-    const url = this.baseUrl + '?page=' + pageNumber;
-    return this.httpClient.get<Movie[]>(url);
+  getMovieList(pageNumber: number, selectedOrder: string, categoryId: number,
+              genreId: number): Observable<Movie[]> {
+    let params = new HttpParams();
+    params = params.set("page", String(pageNumber));
+    params = params.set("orderBy", selectedOrder);
+    if (categoryId != null) { params = params.set("categoryId", String(categoryId)); }
+    if (genreId != null) { params = params.set("genreId", String(genreId)); }
+    return this.httpClient.get<Movie[]>(this.baseUrl, {params});
   }
 
   postMovie(movie: Movie, file: File, genresIds: number[],

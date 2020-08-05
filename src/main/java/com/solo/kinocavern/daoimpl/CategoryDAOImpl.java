@@ -27,7 +27,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
-    public Category findById(int id) {
+    public Category findById(Long id) {
         Session currentSession = entityManager.unwrap(Session.class);
         Category category = currentSession.get(Category.class, id);
         return category;

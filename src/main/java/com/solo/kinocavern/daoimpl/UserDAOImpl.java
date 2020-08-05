@@ -48,7 +48,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
-    public User findById(int id) {
+    public User findById(Long id) {
         Session currentSession = entityManager.unwrap(Session.class);
         User user = currentSession.get(User.class, id);
         return user;

@@ -20,7 +20,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Country findById(int id) {
+    public Country findById(Long id) {
         return countryDAO.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public List<Country> findByIds(List<Integer> ids) {
+    public List<Country> findByIds(List<Long> ids) {
         return countryDAO.findByIds(ids);
     }
 }

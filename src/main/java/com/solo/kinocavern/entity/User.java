@@ -1,11 +1,13 @@
 package com.solo.kinocavern.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.*;
 
 @Entity
 @Table(	name = "user",
@@ -40,7 +42,21 @@ public class User {
         @JoinColumn(name = "role_id",referencedColumnName="id")
         private Role role;
 
+        @OneToMany(
+                mappedBy = "user",
+                cascade = CascadeType.ALL,
+                orphanRemoval = true
+        )
+        private Set<Rating> ratings = new HashSet<>();
 
+        @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+                CascadeType.DETACH, CascadeType.REFRESH})
+        @JoinTable(
+                name="wishlist",
+                joinColumns=@JoinColumn(name="user_id"),
+                inverseJoinColumns=@JoinColumn(name="movie_id")
+        )
+        private List<Movie> movies;
 
         public User() {
         }
@@ -57,6 +73,14 @@ public class User {
                 this.username = username;
                 this.email = email;
                 this.password = password;
+        }
+
+        public Set<Rating> getRatings() {
+                return ratings;
+        }
+
+        public void setRatings(Set<Rating> ratings) {
+                this.ratings = ratings;
         }
 
         public Long getId() {
@@ -97,5 +121,39 @@ public class User {
 
         public void setRole(Role role) {
                 this.role = role;
+        }
+
+        public List<Movie> getMovies() {
+                return movies;
+        }
+
+        public void setMovies(List<Movie> movies) {
+                this.movies = movies;
+        }
+
+        /////
+
+        public void addMovieToWishlist(Movie movie) {
+
+                if (movies == null) {
+                        movies = new ArrayList<Movie>();
+                }
+                movies.add(movie);
+        }
+
+
+        @Override
+        public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                User user = (User) o;
+                return id.equals(user.id) &&
+                        username.equals(user.username) &&
+                        Objects.equals(email, user.email);
+        }
+
+        @Override
+        public int hashCode() {
+                return Objects.hash(id, username, email);
         }
 }

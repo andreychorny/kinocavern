@@ -6,3 +6,13 @@ img {
     object-fit: cover;
     border-radius: 2%;
   } 
+.sidePanel{
+    border-right: 1px solid silver;
+}
+.movie-item{
+    margin-bottom: 1rem;
+}
+.pages{
+    padding-left: 30%;
+    padding-top: 1rem;
+}

@@ -20,7 +20,7 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public Genre findById(int id) {
+    public Genre findById(Long id) {
         return genreDAO.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public List<Genre> findByIds(List<Integer> ids) {
+    public List<Genre> findByIds(List<Long> ids) {
         return genreDAO.findByIds(ids);
     }
 }

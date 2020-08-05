@@ -1,11 +1,11 @@
 package com.solo.kinocavern.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name="movie")
@@ -14,7 +14,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Long id;
 
     @Column(name="title")
     private String title;
@@ -48,12 +48,30 @@ public class Movie {
     )
     private List<Genre> genres;
 
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "movie",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JsonBackReference
+    private List<Rating> ratings = new ArrayList<>();
+
+    @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinTable(
+            name="wishlist",
+            joinColumns=@JoinColumn(name="movie_id"),
+            inverseJoinColumns=@JoinColumn(name="user_id")
+    )
+    @JsonIgnore
+    private List<User> users;
+
 
     public Movie() {
 
     }
 
-    public Movie(int id, String title, int year, String imageUrl, Category category,
+    public Movie(Long id, String title, int year, String imageUrl, Category category,
                  List<Country> countries, List<Genre> genres) {
         this.id = id;
         this.title = title;
@@ -64,11 +82,11 @@ public class Movie {
         this.genres = genres;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -120,7 +138,15 @@ public class Movie {
         this.genres = genres;
     }
 
-    /////////
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+/////////
 
     public void addGenre(Genre genre) {
 
@@ -139,4 +165,19 @@ public class Movie {
         countries.add(country);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return year == movie.year &&
+                id.equals(movie.id) &&
+                title.equals(movie.title) &&
+                Objects.equals(imageUrl, movie.imageUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, year, imageUrl);
+    }
 }

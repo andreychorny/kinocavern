@@ -4,6 +4,7 @@ import com.solo.kinocavern.entity.Movie;
 import com.solo.kinocavern.entity.MovieFormWrapper;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
@@ -11,15 +12,16 @@ public interface MovieService {
 
     public List<Movie> findAll();
 
-    public List<Movie> findAllByPage(int pageNumber);
+    public List<Movie> findAllByParams(int pageNumber, String orderBy, Long categoryId,
+                                       Long genreId);
 
-    public Long findAmountOfElements();
+    public Long findAmountOfElementsInSearchByParams(Long categoryId, Long genreId);
 
-    public Movie findById(int id);
+    public Movie findById(Long id);
 
     public Movie save(Movie movie);
 
-    public void deleteById(int id);
+    public void deleteById(Long id);
 
     public Movie addNewMovie(MovieFormWrapper model);
 

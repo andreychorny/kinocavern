@@ -27,7 +27,7 @@ public class GenreDAOImpl implements GenreDAO {
     }
 
     @Override
-    public Genre findById(int id) {
+    public Genre findById(Long id) {
         Session currentSession = entityManager.unwrap(Session.class);
         Genre genre = currentSession.get(Genre.class, id);
         return genre;
@@ -41,7 +41,7 @@ public class GenreDAOImpl implements GenreDAO {
 
 
     @Override
-    public List<Genre> findByIds(List<Integer> ids){
+    public List<Genre> findByIds(List<Long> ids){
         Session currentSession = entityManager.unwrap(Session.class);
         Query query = currentSession.createQuery("from Genre where id IN :idList");
         query.setParameterList("idList", ids);

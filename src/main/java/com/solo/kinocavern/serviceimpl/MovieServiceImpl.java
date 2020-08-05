@@ -2,14 +2,12 @@ package com.solo.kinocavern.serviceimpl;
 
 import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.entity.*;
-import com.solo.kinocavern.service.CategoryService;
-import com.solo.kinocavern.service.CountryService;
-import com.solo.kinocavern.service.GenreService;
-import com.solo.kinocavern.service.MovieService;
+import com.solo.kinocavern.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -27,6 +25,9 @@ public class MovieServiceImpl implements MovieService {
     private CategoryService categoryService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private GenreService genreService;
 
     @Autowired
@@ -36,12 +37,12 @@ public class MovieServiceImpl implements MovieService {
     public Movie addNewMovie(MovieFormWrapper model) {
 
         // in case of id=0, Hibernate's save/update will perform saving of new record
-        int id = 0;
+        Long id = (long) 0;
         String title = model.getTitle();
         int year = model.getYear();
-        List<Integer> genresIds = model.getGenresIds();
-        List<Integer> countriesIds = model.getCountriesIds();
-        Integer categoryId = model.getCategoryId();
+        List<Long> genresIds = model.getGenresIds();
+        List<Long> countriesIds = model.getCountriesIds();
+        Long categoryId = model.getCategoryId();
         List<Genre> genres = genreService.findByIds(genresIds);
         List<Country> countries = countryService.findByIds(countriesIds);
         Category category = categoryService.findById(categoryId);
@@ -70,17 +71,18 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> findAllByPage(int pageNumber) {
-        return movieDAO.findAllByPage(pageNumber);
+    public List<Movie> findAllByParams(int pageNumber, String orderBy, Long categoryId,
+                                       Long genreId) {
+        return movieDAO.findAllByParams(pageNumber, orderBy, categoryId, genreId);
     }
 
     @Override
-    public Long findAmountOfElements() {
-        return movieDAO.findAmountOfElements();
+    public Long findAmountOfElementsInSearchByParams(Long categoryId, Long genreId) {
+        return movieDAO.findAmountOfElementsInSearchByParams(categoryId, genreId);
     }
 
     @Override
-    public Movie findById(int id) {
+    public Movie findById(Long id) {
         return movieDAO.findById(id);
     }
 
@@ -90,7 +92,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void deleteById(int movieId) {
+    public void deleteById(Long movieId) {
 
         Movie tempMovie = movieDAO.findById(movieId);
 

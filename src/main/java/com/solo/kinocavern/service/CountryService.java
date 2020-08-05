@@ -8,10 +8,10 @@ public interface CountryService {
 
     public List<Country> findAll();
 
-    public Country findById(int id);
+    public Country findById(Long id);
 
     public void save(Country country);
 
-    public List<Country> findByIds(List<Integer> ids);
+    public List<Country> findByIds(List<Long> ids);
 
 }

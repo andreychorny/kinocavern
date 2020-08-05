@@ -19,6 +19,8 @@ import { EditMovieComponent } from './components/admin/edit-movie/edit-movie.com
 import { AttachGenresComponent } from './components/admin/attach-genres/attach-genres.component';
 import { AttachCountriesComponent } from './components/admin/attach-countries/attach-countries.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SearchComponent } from './components/search/search.component';
+import { UserRateComponent } from './components/user-rate/user-rate.component';
 
 
 const routes = [
@@ -44,6 +46,8 @@ const routes = [
     EditMovieComponent,
     AttachGenresComponent,
     AttachCountriesComponent,
+    SearchComponent,
+    UserRateComponent,
   ],
   imports: [
     BrowserModule,

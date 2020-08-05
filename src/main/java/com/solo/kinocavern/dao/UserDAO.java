@@ -8,7 +8,7 @@ public interface UserDAO {
 
     List<User> findAll();
 
-    User findById(int id);
+    User findById(Long id);
 
     Boolean usernameExists(String username);
 

@@ -8,10 +8,10 @@ public interface GenreService {
 
     public List<Genre> findAll();
 
-    public Genre findById(int id);
+    public Genre findById(Long id);
 
     public void save(Genre genre);
 
-    public List<Genre> findByIds(List<Integer> ids);
+    public List<Genre> findByIds(List<Long> ids);
 
 }

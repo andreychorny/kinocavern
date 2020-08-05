@@ -15,7 +15,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     UserDAO userDAO;
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username){
         User user = userDAO.findByUsername(username);
 

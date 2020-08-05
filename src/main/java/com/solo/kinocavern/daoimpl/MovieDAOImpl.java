@@ -31,15 +31,23 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     @Override
-    public List<Movie> findAllByPage(int pageNumber) {
+    public List<Movie> findAllByParams(int pageNumber, String orderBy, Long categoryId,
+                                       Long genreId) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query query = currentSession.createQuery("from Movie");
+        Query query = currentSession.createQuery("SELECT m FROM Movie m " +
+                "LEFT JOIN m.genres g " +
+                " WHERE (:category_id is null OR m.category.id = :category_id) " +
+                        " AND (:genre_id is null OR g.id = (:genre_id)) " +
+                " GROUP BY m ORDER BY m." + orderBy);
+        query.setParameter("category_id", categoryId);
+        query.setParameter("genre_id", genreId);
         int pageSize = 12;
         query.setFirstResult(pageNumber*pageSize);
         query.setMaxResults(pageSize);
         List<Movie> movies = query.list();
         return movies;
     }
+
 
     @Override
     public Long findAmountOfElements() {
@@ -51,8 +59,22 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     @Override
+    public Long findAmountOfElementsInSearchByParams(Long categoryId, Long genreId) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        String countQ = "Select count(distinct m.id) from Movie m LEFT JOIN m.genres g " +
+                " WHERE (:category_id is null OR m.category.id = :category_id) " +
+                " AND (:genre_id is null OR g.id = (:genre_id))";
+        Query countQuery = currentSession.createQuery(countQ);
+        countQuery.setParameter("category_id", categoryId);
+        countQuery.setParameter("genre_id", genreId);
+        Long countedMovies = (Long) countQuery.uniqueResult();
+        return countedMovies;
+    }
+
+
+    @Override
     @Transactional
-    public Movie findById(int id) {
+    public Movie findById(Long id) {
         Session currentSession = entityManager.unwrap(Session.class);
 
         Movie movie = currentSession.get(Movie.class, id);
@@ -72,7 +94,7 @@ public class MovieDAOImpl implements MovieDAO {
 
     @Override
     @Transactional
-    public void deleteById(int idDelete) {
+    public void deleteById(Long idDelete) {
 
         Session currentSession = entityManager.unwrap(Session.class);
         Query theQuery = currentSession.createQuery(

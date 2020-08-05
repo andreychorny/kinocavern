@@ -1,27 +1,60 @@
 <div class="container-fluid">
     <div class="row">
-        <div *ngFor="let movie of movies" class="col-md-3">
-            <div class="product-box">
-                <a routerLink="/movie/{{ movie.id }}">
-                    <img src="{{ movie.imageUrl }}" class="img-responsive">
-                </a>
-                <a routerLink="/movie/{{ movie.id }}">
-                    <h5>{{ movie.title }}</h5>
-                </a>
-                <div class="year">{{movie.year}}</div>
+        <div class="col-12 col-md-2 sidePanel">
+            <app-search></app-search>
+            <div class="btn-group">
+                <div ngbDropdown role="group"
+                aria-label="Button group with nested dropdown">
+                    <button class="btn btn-outline-primary" ngbDropdownToggle>Order By</button>
+                    <div class="dropdown-menu" ngbDropdownMenu
+                            (click)="onButtonGroupClick($event)">
+                        <button value="id ASC" ngbDropdownItem class="active">Date added</button>
+                        <button value="title ASC" ngbDropdownItem>Title ASC</button>
+                        <button value="title DESC" ngbDropdownItem>Title DESC</button>
+                        <button value="year ASC" ngbDropdownItem>Year ASC</button>
+                        <button value="year DESC" ngbDropdownItem>Year DESC</button>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <div ngbDropdown role="group"
+                aria-label="Button group with nested dropdown">
+                    <button class="btn btn-outline-primary" ngbDropdownToggle>Genres</button>
+                    <div class="dropdown-menu" ngbDropdownMenu
+                            (click)="onButtonGenreClick($event)">
+                        <button ngbDropdownItem class="active">All</button>
+                        <button *ngFor="let genre of genres" value="{{genre.id}}"
+                             ngbDropdownItem>{{genre.name}}</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-9" style="padding-left: 30%">
-                            
-            <ngb-pagination [(page)]="pageNumber"
-                            [pageSize]="pageSize"
-                            [collectionSize]="amountOfElements"
-                            (pageChange)="listOfMovies()">
 
-            </ngb-pagination>
+        <div class="col-12 col-md-10">
+            <div class="row">
+                <div *ngFor="let movie of movies" class="col-6 col-md-3 movie-item">
+                    <div class="product-box">
+                        <a routerLink="/movie/{{ movie.id }}">
+                            <img src="{{ movie.imageUrl }}" class="img-responsive">
+                        </a>
+                        <a routerLink="/movie/{{ movie.id }}">
+                            <h5>{{ movie.title }}</h5>
+                        </a>
+                        <div class="year">{{movie.year}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9 pages">
+                                    
+                    <ngb-pagination [(page)]="pageNumber"
+                                    [pageSize]="pageSize"
+                                    [collectionSize]="amountOfElements"
+                                    (pageChange)="loadListOfMovies()">
+    
+                    </ngb-pagination>
+                </div>
+            </div>    
         </div>
     </div>
-
 </div>
