@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
         User currentUser = this.loadCurrentUser(request);
         Movie movie = movieService.findById(movieId);
         deleteRatingIfExist(movieId, currentUser);
+        deleteWishlistIfExist(movieId, currentUser);
         Rating rating = new Rating(rate, currentUser, movie);
         currentUser.getRatings().add(rating);
         userDAO.save(currentUser);
@@ -53,11 +54,15 @@ public class UserServiceImpl implements UserService {
     public void addToWishlist(HttpServletRequest request, Long movieId){
         User currentUser = this.loadCurrentUser(request);
         deleteRatingIfExist(movieId, currentUser);
-        Movie movie = movieService.findById(movieId);
-        currentUser.addMovieToWishlist(movie);
-        userDAO.save(currentUser);
-        currentUser.getMovies().size();
+        //if we have movie in wishlist, we delete it. If not - add it
+        if(!deleteWishlistIfExist(movieId, currentUser)){
+            Movie movie = movieService.findById(movieId);
+            currentUser.addMovieToWishlist(movie);
+            userDAO.save(currentUser);
+            currentUser.getWishlist().size();
+        }
     }
+
     @Override
     public User loadCurrentUser(HttpServletRequest request) {
         String token = parseJwt(request);
@@ -83,5 +88,18 @@ public class UserServiceImpl implements UserService {
                 break;
             }
         }
+    }
+
+    public boolean deleteWishlistIfExist(Long movieId, User user) {
+        List<Movie> wishlistedMovies = user.getWishlist();
+        for (Movie movie : wishlistedMovies) {
+            if (movie.getId() == movieId) {
+                user.getWishlist().remove(movie);
+                //update user's ratings
+                userDAO.save(user);
+                return true;
+            }
+        }
+        return false;
     }
 }

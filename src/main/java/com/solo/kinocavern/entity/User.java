@@ -56,7 +56,7 @@ public class User {
                 joinColumns=@JoinColumn(name="user_id"),
                 inverseJoinColumns=@JoinColumn(name="movie_id")
         )
-        private List<Movie> movies;
+        private List<Movie> wishlist;
 
         public User() {
         }
@@ -123,22 +123,22 @@ public class User {
                 this.role = role;
         }
 
-        public List<Movie> getMovies() {
-                return movies;
+        public List<Movie> getWishlist() {
+                return wishlist;
         }
 
-        public void setMovies(List<Movie> movies) {
-                this.movies = movies;
+        public void setWishlist(List<Movie> wishlist) {
+                this.wishlist = wishlist;
         }
 
         /////
 
         public void addMovieToWishlist(Movie movie) {
 
-                if (movies == null) {
-                        movies = new ArrayList<Movie>();
+                if (wishlist == null) {
+                        wishlist = new ArrayList<Movie>();
                 }
-                movies.add(movie);
+                wishlist.add(movie);
         }
 
 

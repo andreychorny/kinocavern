@@ -56,17 +56,6 @@ public class Movie {
     @JsonBackReference
     private List<Rating> ratings = new ArrayList<>();
 
-    @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinTable(
-            name="wishlist",
-            joinColumns=@JoinColumn(name="movie_id"),
-            inverseJoinColumns=@JoinColumn(name="user_id")
-    )
-    @JsonIgnore
-    private List<User> users;
-
-
     public Movie() {
 
     }

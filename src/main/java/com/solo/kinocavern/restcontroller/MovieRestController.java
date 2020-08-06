@@ -68,11 +68,12 @@ public class MovieRestController {
             searchRating.setUser(currentUser);
             searchRating.setMovie(movie);
             int index = movie.getRatings().indexOf(searchRating);
-            System.out.println(movie.getRatings().get(0).getRate());
             if(index>=0){
                 Rating ratingOfLoggedUser = movie.getRatings().get(index);
                 response.put("rating", ratingOfLoggedUser);
             };
+            boolean movieWishlisted = currentUser.getWishlist().contains(movie);
+            response.put("wishlisted", movieWishlisted);
         }
         if (movie == null) {
             throw new RuntimeException("Movie id not found - " + movieId);
