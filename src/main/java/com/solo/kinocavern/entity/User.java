@@ -1,6 +1,8 @@
 package com.solo.kinocavern.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
@@ -31,22 +33,26 @@ public class User {
         @Size(max = 50)
         @Email
         @Column(name="email")
+        @JsonIgnore
         private String email;
 
         @NotBlank
         @Size(min = 6 ,max = 60)
         @Column(name="password")
+        @JsonIgnore
         private String password;
 
         @ManyToOne
         @JoinColumn(name = "role_id",referencedColumnName="id")
+        @JsonIgnore
         private Role role;
 
-        @OneToMany(
+        @OneToMany(fetch = FetchType.EAGER,
                 mappedBy = "user",
                 cascade = CascadeType.ALL,
                 orphanRemoval = true
         )
+        @JsonManagedReference
         private Set<Rating> ratings = new HashSet<>();
 
         @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
@@ -74,6 +80,7 @@ public class User {
                 this.email = email;
                 this.password = password;
         }
+
 
         public Set<Rating> getRatings() {
                 return ratings;

@@ -12,6 +12,8 @@ public interface UserService {
 
     public User findByUsername(String username);
 
+    public User findById(Long id);
+
     public User loadCurrentUser(HttpServletRequest request);
 
     public void deleteRatingIfExist(Long movieId, User user);

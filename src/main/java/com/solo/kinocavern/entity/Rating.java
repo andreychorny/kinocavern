@@ -1,6 +1,7 @@
 package com.solo.kinocavern.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -20,8 +21,9 @@ public class Rating {
     @JsonBackReference
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @MapsId("movieId")
+    @JsonManagedReference
     private Movie movie;
 
     public Rating() {

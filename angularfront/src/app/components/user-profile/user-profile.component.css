@@ -1,0 +1,92 @@
+.avatar{
+    width: 150px;
+    height: 150px;
+}
+.movieImg {
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 2%;
+
+}
+.movie{
+    margin: 30px;
+}
+.btn{
+    margin: 10px;
+}
+
+.container{
+    margin-top: 20px;
+}
+
+.rate10 {
+    background-color: #33FF00;
+    border-radius: 15px;
+    padding: 15px;
+
+  }
+  
+  .rate9{
+    background-color: #66FF00;
+    border-radius: 15px;
+    padding: 15px;
+  }
+
+  
+  .rate8 {
+    background-color: #99FF00;
+    border-radius: 15px;
+    padding: 15px;
+
+  }
+  
+  .rate7 {
+    background-color: #CCFF00;
+    border-radius: 15px;
+    padding: 15px;
+
+  }
+  
+  
+  .rate6 {
+    background-color: #FFFF00;
+    border-radius: 15px;
+    padding: 15px;
+
+  }
+
+  .rate5 {
+    background-color: #FFCC00;
+    border-radius: 15px;
+    padding: 15px;
+
+  }
+  
+  
+  .rate4 {
+    background-color: #FF9900;
+    border-radius: 15px;
+    padding: 15px;
+
+  }
+  
+  .rate3 {
+    background-color: #FF6600;
+    border-radius: 15px;
+    padding: 15px;
+
+  }
+
+  .rate2 {
+    background-color: #FF3300;
+    border-radius: 15px;
+    padding: 15px;
+
+  }
+
+  .rate1 {
+    background-color: #FF0000;
+    border-radius: 15px;
+    padding: 15px;
+
+  }

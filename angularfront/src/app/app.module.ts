@@ -21,7 +21,10 @@ import { AttachCountriesComponent } from './components/admin/attach-countries/at
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SearchComponent } from './components/search/search.component';
 import { UserRateComponent } from './components/user-rate/user-rate.component';
-
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
+import { JwPaginationModule } from 'jw-angular-pagination';
 
 const routes = [
   { path: 'movielist', component: MovieListComponent },
@@ -30,6 +33,7 @@ const routes = [
   { path: 'admin/addMovie', component: AddMovieComponent},
   { path: 'admin/editMovie/:id', component: EditMovieComponent},
   { path: 'movie/:id', component: MovieDetailsComponent},
+  { path: 'users/:id', component: UserProfileComponent},
   { path: '', redirectTo: 'movielist', pathMatch: 'full' }];
 
 
@@ -48,13 +52,17 @@ const routes = [
     AttachCountriesComponent,
     SearchComponent,
     UserRateComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     NgbModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatTabsModule,
+    JwPaginationModule
   ],
   providers: [MovieService, AuthenticationService, TokenStorageService, 
     authInterceptorProviders],

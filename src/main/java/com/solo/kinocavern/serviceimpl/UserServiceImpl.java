@@ -39,6 +39,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findById(Long id) {
+        return userDAO.findById(id);
+    }
+
+    @Override
     public void addRating(HttpServletRequest request, Long movieId, int rate){
         User currentUser = this.loadCurrentUser(request);
         Movie movie = movieService.findById(movieId);

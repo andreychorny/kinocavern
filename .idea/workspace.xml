@@ -16,7 +16,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0625405-b10b-4f1a-9e65-a6bfb9e38906" name="Default Changelist" comment="Rating + wishlisting">
+    <list default="true" id="a0625405-b10b-4f1a-9e65-a6bfb9e38906" name="Default Changelist" comment="Finished wishlisting">
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/user-profile/user-profile.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/user-profile/user-profile.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/user-profile/user-profile.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/components/user-profile/user-profile.component.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/0Blade Runner 2049.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/0Mindhunter.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/0The House That Jack Built.jpg" afterDir="false" />
@@ -24,10 +28,20 @@
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/0gsadgsda.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/0vzxcvxcz.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/61bzxgs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/custom-theme.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/services/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Rating.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/MovieRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/MovieRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/UserRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/serviceimpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/serviceimpl/UserServiceImpl.java" afterDir="false" />
     </list>
     <list id="28a0202e-e527-444d-8e15-6f1df05fbd5d" name="Revert &quot;set up initial state of project&quot;" comment="Revert &quot;set up initial state of project&quot;&#10;&#10;This reverts commit c195af23" />
@@ -176,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596624045818</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Finished wishlisting">
+      <created>1596743334061</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1596743334061</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -217,7 +238,8 @@
     <MESSAGE value="middle-step to fully finished movie crud" />
     <MESSAGE value="fully done crud" />
     <MESSAGE value="Rating + wishlisting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rating + wishlisting" />
+    <MESSAGE value="Finished wishlisting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished wishlisting" />
   </component>
   <component name="WindowStateProjectService">
     <state x="535" y="117" key="#Auto_Import" timestamp="1595195089814">
@@ -232,10 +254,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1593873202228" />
-    <state x="967" y="116" key="#com.intellij.ide.util.MemberChooser" timestamp="1596731042260">
+    <state x="967" y="116" key="#com.intellij.ide.util.MemberChooser" timestamp="1596764698616">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="967" y="116" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1596731042260" />
+    <state x="967" y="116" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1596764698616" />
     <state x="381" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1593967101488">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -248,14 +270,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1593905916808" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596314585371">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596764966574">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1596314585371" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1593873527708">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1596764966574" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1596755795823">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1593873527708" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596755795823" />
     <state x="593" y="332" key="Github.CreateGistDialog" timestamp="1593801259637">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -268,22 +290,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="492" y="115" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593807655558" />
-    <state width="1493" height="243" key="GridCell.Tab.0.bottom" timestamp="1596738652296">
+    <state width="1493" height="243" key="GridCell.Tab.0.bottom" timestamp="1596986788069">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="243" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596738652296" />
-    <state width="1493" height="243" key="GridCell.Tab.0.center" timestamp="1596738652296">
+    <state width="1493" height="243" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596986788069" />
+    <state width="1493" height="243" key="GridCell.Tab.0.center" timestamp="1596986788069">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="243" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596738652296" />
-    <state width="1493" height="243" key="GridCell.Tab.0.left" timestamp="1596738652296">
+    <state width="1493" height="243" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596986788069" />
+    <state width="1493" height="243" key="GridCell.Tab.0.left" timestamp="1596986788069">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="243" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596738652296" />
-    <state width="1493" height="243" key="GridCell.Tab.0.right" timestamp="1596738652296">
+    <state width="1493" height="243" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596986788069" />
+    <state width="1493" height="243" key="GridCell.Tab.0.right" timestamp="1596986788069">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="243" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596738652296" />
+    <state width="1493" height="243" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596986788069" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1593906321018">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

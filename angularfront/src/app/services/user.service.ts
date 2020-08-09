@@ -16,6 +16,11 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getUser(userId: number): Observable<any> {
+    const userUrl = `${this.baseUrl}/${userId}`;
+    return this.httpClient.get<any>(userUrl);
+  }
+
   postRating(movieId: number, rate: number): Observable<any>{
     const url = this.baseUrl + '/rate';
     const rating = {

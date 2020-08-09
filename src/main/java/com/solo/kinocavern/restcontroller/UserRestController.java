@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -27,6 +28,13 @@ public class UserRestController {
 
     @Autowired
     private MovieDAO movieDAO;
+
+    @GetMapping("/users/{userId}")
+    public User getMovie(@PathVariable Long userId) {
+
+        User userEntity = userService.findById(userId);
+        return userEntity;
+    }
 
     @PostMapping("/users/rate")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
@@ -44,7 +52,6 @@ public class UserRestController {
     public Rating addToWishlist(HttpServletRequest request,
                             @RequestBody Long movieId)  {
         userService.addToWishlist(request, movieId);
-        System.out.println("wishlist");
         return null;
     }
 }
