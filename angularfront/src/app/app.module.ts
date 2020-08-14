@@ -25,6 +25,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import { JwPaginationModule } from 'jw-angular-pagination';
+import { CommentsComponent } from './components/comments/comments.component';
+import { UserDirective } from './directives/user.directive';
 
 const routes = [
   { path: 'movielist', component: MovieListComponent },
@@ -53,6 +55,8 @@ const routes = [
     SearchComponent,
     UserRateComponent,
     UserProfileComponent,
+    CommentsComponent,
+    UserDirective,
   ],
   imports: [
     BrowserModule,

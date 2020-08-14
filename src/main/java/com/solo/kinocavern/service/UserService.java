@@ -21,4 +21,6 @@ public interface UserService {
     public void addRating(HttpServletRequest request, Long movieId, int rate);
 
     public void addToWishlist(HttpServletRequest request, Long movieId);
+
+    public void addComment(HttpServletRequest request, Long movieId, String content, Long parentId);
 }

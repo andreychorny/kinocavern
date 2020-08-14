@@ -48,6 +48,15 @@ public class MovieDAOImpl implements MovieDAO {
         return movies;
     }
 
+    @Override
+    public List<Movie> findByTitle(String title){
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query query = currentSession.createQuery("SELECT m FROM Movie m WHERE m.title LIKE :title");
+        query.setParameter("title", "%" + title + "%");
+        List<Movie> movies = query.list();
+        return movies;
+    }
+
 
     @Override
     public Long findAmountOfElements() {

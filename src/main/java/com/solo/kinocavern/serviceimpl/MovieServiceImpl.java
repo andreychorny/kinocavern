@@ -2,12 +2,12 @@ package com.solo.kinocavern.serviceimpl;
 
 import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.entity.*;
+import com.solo.kinocavern.payload.request.MovieFormWrapper;
 import com.solo.kinocavern.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -84,6 +84,11 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Movie findById(Long id) {
         return movieDAO.findById(id);
+    }
+
+    @Override
+    public List<Movie> findByTitle(String title) {
+        return movieDAO.findByTitle(title);
     }
 
     @Override

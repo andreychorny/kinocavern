@@ -1,0 +1,49 @@
+
+<div class="container">
+	<form method="POST" id="commentForm" *appUser>
+		<div class="form-group">
+            <input name="content" [(ngModel)]="commentContent" id="content" class="form-control"
+			 placeholder="Enter Comment" rows="5" required />
+			 <button class="btn btn-primary" (click)="onButtonPostComment(null, null)">Post Comment</button>
+		</div>
+	</form>
+	<div *ngFor="let comment of comments">
+		<div class="row"  *ngIf="comment.parentId == null">
+			<div class="col-11">
+				<div class="card"> 
+					<div class="card-header text-white bg-primary mb-3">By 
+						<a class="text-white" routerLink="/users/{{ comment.user.id }}">
+						<b>{{comment.user.username}}</b>
+						</a>
+					</div>
+					<div class="card-body"> 
+						{{comment.content}}
+					</div>
+					<div *ngFor="let childComment of getChildComments(comment.id)">
+						<div class="card" style="margin-left:50px"> 
+							<div class="card-header text-white bg-info mb-3">By 
+								<a class="text-white" routerLink="/users/{{ childComment.user.id }}">
+								<b>{{childComment.user.username}}</b>
+								</a>
+							</div>
+							<div class="card-body"> {{childComment.content}}</div>
+						</div>	
+					</div>	
+				</div>
+			</div>
+			<div class="col-1 reply">
+				<div class="btn-group" ngbDropdown role="group">
+					<button class="btn btn-primary" ngbDropdownToggle>Reply</button>
+					<div class="dropdown-menu" ngbDropdownMenu>
+						<div class="form-group">
+							<input #rateInput class="form-control"
+							placeholder="Enter Comment" rows="5" required />			   
+							<button class="btn btn-primary" 
+								(click)="onButtonPostComment(comment.id, rateInput.value)">Post</button>
+						</div>							
+					</div>
+				  </div>			
+			</div>
+		</div>
+	</div>
+</div>

@@ -24,7 +24,6 @@ export class UserService {
   postRating(movieId: number, rate: number): Observable<any>{
     const url = this.baseUrl + '/rate';
     const rating = {
-      userId: null,
       movieId,
       rate
     };
@@ -36,4 +35,15 @@ export class UserService {
     console.log("!!!!!");
     return this.httpClient.post(url, movieId, httpOptions);
   }
+
+  postComment(movieId: number, content: string, commentParentId: number): Observable<any>{
+    const url = this.baseUrl + '/comment';
+    const comment = {
+      movieId,
+      content,
+      commentParentId
+    };
+    return this.httpClient.post(url, comment, httpOptions);
+  }
+
 }

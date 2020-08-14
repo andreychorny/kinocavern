@@ -1,9 +1,6 @@
 package com.solo.kinocavern.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.springframework.stereotype.Controller;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -47,12 +44,12 @@ public class User {
         @JsonIgnore
         private Role role;
 
-        @OneToMany(fetch = FetchType.EAGER,
+        @OneToMany(fetch = FetchType.LAZY,
                 mappedBy = "user",
                 cascade = CascadeType.ALL,
                 orphanRemoval = true
         )
-        @JsonManagedReference
+        @JsonIgnore
         private Set<Rating> ratings = new HashSet<>();
 
         @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
@@ -62,7 +59,16 @@ public class User {
                 joinColumns=@JoinColumn(name="user_id"),
                 inverseJoinColumns=@JoinColumn(name="movie_id")
         )
-        private List<Movie> wishlist;
+        @JsonIgnore
+        private List<Movie> wishlist = new ArrayList<Movie>();
+
+        @OneToMany(fetch = FetchType.LAZY,
+                mappedBy = "user",
+                cascade = CascadeType.ALL,
+                orphanRemoval = true
+        )
+        @JsonIgnore
+        private Set<Comment> comments = new HashSet<>();
 
         public User() {
         }
@@ -136,6 +142,14 @@ public class User {
 
         public void setWishlist(List<Movie> wishlist) {
                 this.wishlist = wishlist;
+        }
+
+        public Set<Comment> getComments() {
+                return comments;
+        }
+
+        public void setComments(Set<Comment> comments) {
+                this.comments = comments;
         }
 
         /////

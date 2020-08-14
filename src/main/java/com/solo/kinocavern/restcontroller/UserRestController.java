@@ -3,17 +3,15 @@ package com.solo.kinocavern.restcontroller;
 import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.dao.UserDAO;
 import com.solo.kinocavern.entity.*;
-import com.solo.kinocavern.security.util.JwtUtils;
+import com.solo.kinocavern.payload.request.CommentFormWrapper;
+import com.solo.kinocavern.payload.request.RatingFormWrapper;
+import com.solo.kinocavern.payload.response.UserProfile;
 import com.solo.kinocavern.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
@@ -30,10 +28,12 @@ public class UserRestController {
     private MovieDAO movieDAO;
 
     @GetMapping("/users/{userId}")
-    public User getMovie(@PathVariable Long userId) {
+    public UserProfile getUserProfile(@PathVariable Long userId) {
 
-        User userEntity = userService.findById(userId);
-        return userEntity;
+        User user = userService.findById(userId);
+        UserProfile userProfile = new UserProfile(user.getId(),user.getUsername(),user.getRatings(),
+                user.getWishlist(),user.getComments());
+        return userProfile;
     }
 
     @PostMapping("/users/rate")
@@ -54,4 +54,21 @@ public class UserRestController {
         userService.addToWishlist(request, movieId);
         return null;
     }
+
+    @PostMapping("/users/comment")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    public Comment addComment(HttpServletRequest request,
+                              @RequestBody CommentFormWrapper commentFormWrapper)  {
+        Long movieId = commentFormWrapper.getMovieId();
+        String content = commentFormWrapper.getContent();
+        Long commentParentId = commentFormWrapper.getCommentParentId();
+
+        userService.addComment(request, movieId, content, commentParentId);
+        System.out.println(movieId);
+        System.out.println(content);
+        System.out.println(commentParentId);
+
+        return null;
+    }
+
 }

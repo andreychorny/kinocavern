@@ -16,14 +16,14 @@ public class Rating {
     @Column(name="rate")
     private int rate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @MapsId("userId")
     @JsonBackReference
     private User user;
 
     @ManyToOne()
     @MapsId("movieId")
-    @JsonManagedReference
     private Movie movie;
 
     public Rating() {

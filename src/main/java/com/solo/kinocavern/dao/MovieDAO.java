@@ -22,5 +22,7 @@ public interface MovieDAO {
 
     public void deleteById(Long id);
 
+    public List<Movie> findByTitle(String title);
+
 //    public List<Country> findCountriesById(Integer id);
 }

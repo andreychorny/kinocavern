@@ -41,9 +41,11 @@ export class EditMovieComponent implements OnInit {
 
     // get the "id" param string. convert string to a number using the "+" symbol
     const theMovieId: number = +this.route.snapshot.paramMap.get('id');
-    this.movieService.getMovie(theMovieId).subscribe(
+    this.movieService.getEditMovie(theMovieId).subscribe(
       data => {
         this.movie = data;
+        console.log(this.movie);
+        console.log(this.movie.category);
         this.loadListOfCategories();
       }
     );
@@ -55,7 +57,6 @@ export class EditMovieComponent implements OnInit {
     const countries = this.attachCountriesComponent.checkedCountries;
     this.movieService.updateMovie(this.movie, this.selectedCategory, genres, countries).subscribe(
       data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isPostFailed = false;
       },
@@ -73,7 +74,6 @@ export class EditMovieComponent implements OnInit {
   onSubmitImg() {
     this.movieService.updateTitleImg(this.currentFile, this.movie.imageUrl).subscribe(
       data => {
-        console.log(data);
         this.reloadPage();
       }
     );
@@ -84,12 +84,11 @@ export class EditMovieComponent implements OnInit {
   }
 
   loadListOfCategories(){
-    console.log('loadList');
     this.categoryService.getCategoriesList().subscribe(
       data => {
         this.categories = data;
-        for(const categ of this.categories){
-          if(categ.id === this.movie.category.id) {
+        for (const categ of this.categories){
+          if (categ.id === this.movie.category.id) {
             this.selectedCategory = categ;
           }
         }

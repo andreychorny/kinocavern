@@ -32,7 +32,6 @@ export class MovieListComponent implements OnInit {
 
   loadListOfMovies(){
     const pageNumber = this.pageNumber - 1;
-    console.log(this.selectedGenreId);
     this.movieService.getMovieList(pageNumber, this.selectedOrder,
                                   this.selectedCategoryId, this.selectedGenreId).subscribe(
       data => {
@@ -84,4 +83,13 @@ export class MovieListComponent implements OnInit {
     }
   }
 
+  doSearch(value: string){
+    this.movieService.getMoviesByTitle(value).subscribe(
+      data => {
+        this.movies = data;
+        this.amountOfElements = 1;
+      }
+    );
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
 }

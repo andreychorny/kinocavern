@@ -1,0 +1,12 @@
+.card{
+    margin: 12px;
+}
+.reply{
+    margin-top:12px;
+}
+.dropdown-toggle::after {
+    display:none;
+}
+.btn{
+    margin-top: 10px;
+}

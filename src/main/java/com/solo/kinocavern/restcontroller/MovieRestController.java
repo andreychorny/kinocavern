@@ -1,10 +1,10 @@
 package com.solo.kinocavern.restcontroller;
 
-import com.solo.kinocavern.dao.CategoryDAO;
-import com.solo.kinocavern.dao.CountryDAO;
-import com.solo.kinocavern.dao.GenreDAO;
-import com.solo.kinocavern.dao.MovieDAO;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.solo.kinocavern.entity.*;
+import com.solo.kinocavern.payload.request.MovieFormWrapper;
+import com.solo.kinocavern.payload.response.MovieDetail;
+import com.solo.kinocavern.payload.response.MovieEditDetail;
 import com.solo.kinocavern.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,10 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,11 +53,10 @@ public class MovieRestController {
     }
 
     @GetMapping("/movies/{movieId}")
-    public Map<String, Object> getMovie(HttpServletRequest request, @PathVariable Long movieId) {
+    public MovieDetail getMovieDetail(HttpServletRequest request, @PathVariable Long movieId) {
 
         Movie movie = movieService.findById(movieId);
-        Map<String, Object> response = new HashMap<>();
-        response.put("movie", movie);
+        MovieDetail movieDetail = new MovieDetail(movie);
         if(request.getHeader("Authorization")!=null){
             User currentUser = userService.loadCurrentUser(request);
             Rating searchRating = new Rating();
@@ -70,15 +65,15 @@ public class MovieRestController {
             int index = movie.getRatings().indexOf(searchRating);
             if(index>=0){
                 Rating ratingOfLoggedUser = movie.getRatings().get(index);
-                response.put("rating", ratingOfLoggedUser);
+                movieDetail.setRating(ratingOfLoggedUser);
             };
             boolean movieWishlisted = currentUser.getWishlist().contains(movie);
-            response.put("wishlisted", movieWishlisted);
+            movieDetail.setWishlisted(movieWishlisted);
         }
         if (movie == null) {
             throw new RuntimeException("Movie id not found - " + movieId);
         }
-        return response;
+        return movieDetail;
     }
 
     @PostMapping
@@ -90,6 +85,20 @@ public class MovieRestController {
         Movie savedMovie = movieService.addNewMovie(model);
         movieService.saveImage(file, savedMovie.getImageUrl());
         return savedMovie;
+    }
+
+    @GetMapping("/movies/edit/{movieId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public MovieEditDetail getMovieEditDetail(HttpServletRequest request, @PathVariable Long movieId) {
+        Movie movie = movieService.findById(movieId);
+        MovieEditDetail movieEditDetail = new MovieEditDetail(movie);
+        return movieEditDetail;
+    }
+
+    @GetMapping("/movies/search/{title}")
+    public List<Movie> getMoviesByTitle(@PathVariable String title) {
+        List<Movie> movies = movieService.findByTitle(title);
+        return movies;
     }
 
     @PutMapping("/movies")
@@ -112,7 +121,6 @@ public class MovieRestController {
     public String deleteMovie(@PathVariable  Long movieId) {
 
         movieService.deleteById(movieId);
-
         return "Deleted movie id - " + movieId;
     }
 

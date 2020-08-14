@@ -50,11 +50,21 @@ public class Movie {
 
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "movie",
-            cascade = CascadeType.ALL,
+            cascade = {CascadeType.PERSIST,
+                    CascadeType.DETACH, CascadeType.REFRESH},
             orphanRemoval = true
     )
     @JsonBackReference
     private List<Rating> ratings = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "movie",
+            cascade = {CascadeType.PERSIST,
+            CascadeType.DETACH, CascadeType.REFRESH},
+            orphanRemoval = true
+    )
+    private List<Comment> comments = new ArrayList<>();
+
 
     public Movie() {
 
@@ -133,6 +143,14 @@ public class Movie {
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
 /////////

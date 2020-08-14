@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -19,6 +20,7 @@ public class CountryDAOImpl implements CountryDAO {
     private EntityManager entityManager;
 
     @Override
+    @Transactional
     public List<Country> findAll() {
         Session currentSession = entityManager.unwrap(Session.class);
         Query<Country> query =
@@ -28,6 +30,7 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
+    @Transactional
     public Country findById(Long id) {
         Session currentSession = entityManager.unwrap(Session.class);
         Country country = currentSession.get(Country.class, id);
@@ -35,6 +38,7 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
+    @Transactional
     public void save(Country country) {
         Session currentSession = entityManager.unwrap(Session.class);
         currentSession.saveOrUpdate(country);
@@ -42,6 +46,7 @@ public class CountryDAOImpl implements CountryDAO {
     }
 
     @Override
+    @Transactional
     public List<Country> findByIds(List<Long> ids){
         Session currentSession = entityManager.unwrap(Session.class);
         Query query = currentSession.createQuery("from Country where id IN :idList");

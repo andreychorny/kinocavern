@@ -1,4 +1,4 @@
-package com.solo.kinocavern.entity;
+package com.solo.kinocavern.payload.request;
 
 import org.springframework.web.multipart.MultipartFile;
 

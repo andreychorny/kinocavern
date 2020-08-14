@@ -29,6 +29,6 @@ export class UserRateComponent implements OnInit {
             window.location.reload();
         }
     );
-    }
+  }
 
 }

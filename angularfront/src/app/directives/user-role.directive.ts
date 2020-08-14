@@ -26,7 +26,7 @@ export class UserRoleDirective {
     }
 }
 
-  @Input() 
+  @Input()
   set appUserRole(role: string) {
       this.userRole = role;
   }

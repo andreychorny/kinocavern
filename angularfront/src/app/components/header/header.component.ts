@@ -12,4 +12,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  getUserProfile(): string{
+      const id = this.tokenStorageService.getUser().id;
+      const profileUrl = '/users/' + id;
+      return profileUrl;
+  }
 }

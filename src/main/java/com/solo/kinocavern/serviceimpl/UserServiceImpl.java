@@ -2,10 +2,12 @@ package com.solo.kinocavern.serviceimpl;
 
 import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.dao.UserDAO;
+import com.solo.kinocavern.entity.Comment;
 import com.solo.kinocavern.entity.Movie;
 import com.solo.kinocavern.entity.Rating;
 import com.solo.kinocavern.entity.User;
 import com.solo.kinocavern.security.util.JwtUtils;
+import com.solo.kinocavern.service.CommentService;
 import com.solo.kinocavern.service.MovieService;
 import com.solo.kinocavern.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private CommentService commentService;
 
     @Autowired
     private MovieService movieService;
@@ -66,6 +71,14 @@ public class UserServiceImpl implements UserService {
             userDAO.save(currentUser);
             currentUser.getWishlist().size();
         }
+    }
+
+    @Override
+    public void addComment(HttpServletRequest request, Long movieId, String content, Long parentId) {
+        User currentUser = this.loadCurrentUser(request);
+        Movie movie = movieService.findById(movieId);
+        Comment comment = new Comment(content, parentId, currentUser, movie);
+        commentService.save(comment);
     }
 
     @Override
