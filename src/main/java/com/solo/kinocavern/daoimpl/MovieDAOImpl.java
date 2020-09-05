@@ -1,11 +1,9 @@
 package com.solo.kinocavern.daoimpl;
 
 import com.solo.kinocavern.dao.MovieDAO;
-import com.solo.kinocavern.entity.Country;
 import com.solo.kinocavern.entity.Movie;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.hibernate.type.StandardBasicTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +20,6 @@ public class MovieDAOImpl implements MovieDAO {
     @Override
     @Transactional
     public List<Movie> findAll() {
-
         Session currentSession = entityManager.unwrap(Session.class);
         Query<Movie> query =
                 currentSession.createQuery("from Movie", Movie.class);
@@ -31,6 +28,7 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     @Override
+    @Transactional
     public List<Movie> findAllByParams(int pageNumber, String orderBy, Long categoryId,
                                        Long genreId) {
         Session currentSession = entityManager.unwrap(Session.class);
@@ -49,6 +47,7 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     @Override
+    @Transactional
     public List<Movie> findByTitle(String title){
         Session currentSession = entityManager.unwrap(Session.class);
         Query query = currentSession.createQuery("SELECT m FROM Movie m WHERE m.title LIKE :title");
@@ -57,8 +56,20 @@ public class MovieDAOImpl implements MovieDAO {
         return movies;
     }
 
+    @Override
+    @Transactional
+    public void updateAverageRating(Long movieId) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query query = currentSession.createQuery(" UPDATE Movie m SET m.averageRating=" +
+                "(SELECT ROUND(AVG(r.rate), 2) FROM Rating r WHERE r.id.movieId=:movieId) " +
+                "WHERE m.id=:movieId");
+        query.setParameter("movieId", movieId);
+        query.executeUpdate();
+    }
+
 
     @Override
+    @Transactional
     public Long findAmountOfElements() {
         Session currentSession = entityManager.unwrap(Session.class);
         String countQ = "Select count (m.id) from Movie m";
@@ -68,6 +79,7 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     @Override
+    @Transactional
     public Long findAmountOfElementsInSearchByParams(Long categoryId, Long genreId) {
         Session currentSession = entityManager.unwrap(Session.class);
         String countQ = "Select count(distinct m.id) from Movie m LEFT JOIN m.genres g " +
@@ -109,7 +121,6 @@ public class MovieDAOImpl implements MovieDAO {
         Query theQuery = currentSession.createQuery(
                         "delete from Movie where id=:idDel");
         theQuery.setParameter("idDel", idDelete);
-
         theQuery.executeUpdate();
     }
 

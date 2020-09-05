@@ -1,7 +1,5 @@
 package com.solo.kinocavern.restcontroller;
 
-import com.solo.kinocavern.dao.GenreDAO;
-import com.solo.kinocavern.entity.Category;
 import com.solo.kinocavern.entity.Genre;
 import com.solo.kinocavern.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;

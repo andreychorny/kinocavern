@@ -1,10 +1,7 @@
 package com.solo.kinocavern.payload.response;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.solo.kinocavern.entity.*;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MovieDetail {
@@ -23,22 +20,14 @@ public class MovieDetail {
 
     private List<Genre> genres;
 
+    private String description;
+
     private Rating rating;
 
     private List<Comment> comments;
 
     private boolean isWishlisted;
 
-    public MovieDetail(Long id, String title, int year, String imageUrl, Category category,
-                       List<Country> countries, List<Genre> genres) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.imageUrl = imageUrl;
-        this.category = category;
-        this.countries = countries;
-        this.genres = genres;
-    }
 
     public MovieDetail(Movie movie) {
         this.id = movie.getId();
@@ -48,6 +37,7 @@ public class MovieDetail {
         this.category = movie.getCategory();
         this.countries = movie.getCountries();
         this.genres = movie.getGenres();
+        this.description = movie.getDescription();
         this.comments = movie.getComments();
     }
 
@@ -129,5 +119,13 @@ public class MovieDetail {
 
     public void setWishlisted(boolean wishlisted) {
         isWishlisted = wishlisted;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

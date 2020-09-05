@@ -4,4 +4,5 @@ export class Movie {
     year: number;
     imageUrl: string;
     comments: any;
+    description: string;
 }

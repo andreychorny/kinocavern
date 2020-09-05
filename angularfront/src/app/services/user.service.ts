@@ -32,7 +32,6 @@ export class UserService {
 
   postToWishlist(movieId: number): Observable<any>{
     const url = this.baseUrl + '/wishlist';
-    console.log("!!!!!");
     return this.httpClient.post(url, movieId, httpOptions);
   }
 
@@ -44,6 +43,16 @@ export class UserService {
       commentParentId
     };
     return this.httpClient.post(url, comment, httpOptions);
+  }
+
+  postAddToSubscription(userId: number): Observable<any>{
+    const url = this.baseUrl + '/subscribeTo/' + userId;
+    return this.httpClient.post(url, null, httpOptions);
+  }
+
+  getIfNewNotificationPresent(): Observable<boolean>{
+    const url =  this.baseUrl + '/newNotifications';
+    return this.httpClient.get<boolean>(url);
   }
 
 }

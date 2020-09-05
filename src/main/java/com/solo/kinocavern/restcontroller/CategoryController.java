@@ -2,7 +2,6 @@ package com.solo.kinocavern.restcontroller;
 
 import com.solo.kinocavern.dao.CategoryDAO;
 import com.solo.kinocavern.entity.Category;
-import com.solo.kinocavern.entity.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

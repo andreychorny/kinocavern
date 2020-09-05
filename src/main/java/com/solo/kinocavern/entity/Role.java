@@ -10,7 +10,6 @@ public class Role {
     @Column(name="id")
     private Integer id;
 
-
     @Enumerated(EnumType.STRING)
     @Column(name="name")
     private EnumRole name;

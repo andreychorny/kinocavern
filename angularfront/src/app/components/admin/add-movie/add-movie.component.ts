@@ -44,6 +44,7 @@ export class AddMovieComponent implements OnInit {
   onSubmit() {
     const genresIds = this.attachGenresComponent.checkedGenresIds;
     const countriesIds = this.attachCountriesComponent.checkedCountriesIds;
+    console.log(this.movie.description);
     if(genresIds.length !== 0 && countriesIds.length !== 0){
       this.movieService.postMovie(this.movie, this.currentFile,
         genresIds, countriesIds, this.selectedCategoryId).subscribe(

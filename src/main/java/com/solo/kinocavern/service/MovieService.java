@@ -2,8 +2,10 @@ package com.solo.kinocavern.service;
 
 import com.solo.kinocavern.entity.Movie;
 import com.solo.kinocavern.payload.request.MovieFormWrapper;
+import com.solo.kinocavern.payload.response.MovieDetail;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
@@ -18,6 +20,8 @@ public interface MovieService {
 
     public Movie findById(Long id);
 
+    public MovieDetail getMovieDetail(HttpServletRequest request, Long movieId);
+
     public List<Movie> findByTitle(String title);
 
     public Movie save(Movie movie);
@@ -29,4 +33,6 @@ public interface MovieService {
     public void saveImage(MultipartFile file, String imgUrl) throws IOException;
 
     public void deleteImageFromDirectory(String imgUrl);
+
+    public void updateAverageRating(Long movieId);
 }

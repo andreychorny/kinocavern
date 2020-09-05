@@ -22,6 +22,12 @@ public class HelloController {
         Boolean boo = userDAO.emailExists(email);
         return boo;
     }
+
+    @GetMapping("/try")
+    public void post(){
+        userDAO.test();
+    }
+
     @GetMapping("/users/{username}")
     public User getUserNickname(@PathVariable String username){
         return userDAO.findByUsername(username);

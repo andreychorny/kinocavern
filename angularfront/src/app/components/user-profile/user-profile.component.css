@@ -2,6 +2,10 @@
     width: 150px;
     height: 150px;
 }
+.avatar-small{
+  width: 75px;
+  height: 75px;
+}
 .movieImg {
     max-width: 100%;
     object-fit: cover;

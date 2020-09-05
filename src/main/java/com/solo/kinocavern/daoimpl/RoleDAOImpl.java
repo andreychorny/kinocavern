@@ -3,7 +3,6 @@ package com.solo.kinocavern.daoimpl;
 import com.solo.kinocavern.dao.RoleDAO;
 import com.solo.kinocavern.entity.EnumRole;
 import com.solo.kinocavern.entity.Role;
-import com.solo.kinocavern.entity.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;

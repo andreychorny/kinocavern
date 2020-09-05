@@ -1,0 +1,31 @@
+<div class="mesgs">
+  <div class="msg_history">
+    <div *ngFor="let message of messages">
+      <div class="outgoing_msg" 
+              *ngIf="isMessageBelongsToCurrentUser(message); else incomingMsg">
+        <div class="sent_msg">
+          <p>{{message.message}}</p>
+      </div>  
+    </div>
+    <ng-template #incomingMsg>
+      <div class="incoming_msg msg">
+        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+        <div class="received_msg">
+          <div class="received_withd_msg">
+            <h5>{{message.usernameFrom}}</h5>
+            <p>{{message.message}}</p>
+          </div>
+        </div>
+      </div>  
+    </ng-template>
+  </div>
+  <div class="type_msg fixed-bottom">
+    <div class="input_msg_write msg">
+      <form [formGroup]="form">
+        <input type="text" class="write_msg" formControlName="message" name="message" placeholder="Type a message" />
+        <button class="btn btn-info" type="button" (click)="sendMessageUsingRest()">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>        

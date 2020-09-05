@@ -1,6 +1,7 @@
 package com.solo.kinocavern.daoimpl;
 
 import com.solo.kinocavern.dao.UserDAO;
+import com.solo.kinocavern.entity.ChatNotification;
 import com.solo.kinocavern.entity.User;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -52,6 +53,19 @@ public class UserDAOImpl implements UserDAO {
         Session currentSession = entityManager.unwrap(Session.class);
         User user = currentSession.get(User.class, id);
         return user;
+    }
+
+    @Override
+    @Transactional
+    public void test() {
+        User user = findById((long) 10);
+        User user2 = findById((long) 9);
+        ChatNotification chatNotification = new ChatNotification();
+        chatNotification.setUser(user);
+        chatNotification.setUserFrom(user2);
+        chatNotification.setMessage("YOU GOT MESSAGE FROM");
+        chatNotification.setUnseen(true);
+        entityManager.persist(chatNotification);
     }
 
     @Override

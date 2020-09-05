@@ -1,7 +1,6 @@
 package com.solo.kinocavern.dao;
 
 import com.solo.kinocavern.entity.Country;
-import com.solo.kinocavern.entity.Genre;
 
 import java.util.List;
 

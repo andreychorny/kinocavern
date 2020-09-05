@@ -1,6 +1,5 @@
 package com.solo.kinocavern.dao;
 
-import com.solo.kinocavern.entity.Country;
 import com.solo.kinocavern.entity.Movie;
 
 import java.util.List;
@@ -24,5 +23,6 @@ public interface MovieDAO {
 
     public List<Movie> findByTitle(String title);
 
+    public void updateAverageRating(Long movieId);
 //    public List<Country> findCountriesById(Integer id);
 }

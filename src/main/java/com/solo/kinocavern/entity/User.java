@@ -1,6 +1,7 @@
 package com.solo.kinocavern.entity;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -52,6 +53,11 @@ public class User {
         @JsonIgnore
         private Set<Rating> ratings = new HashSet<>();
 
+        @OneToMany(fetch=FetchType.LAZY, mappedBy="user",
+                cascade=CascadeType.ALL)
+        @JsonIgnore
+        private List<Notification> notifications;
+
         @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                 CascadeType.DETACH, CascadeType.REFRESH})
         @JoinTable(
@@ -60,7 +66,7 @@ public class User {
                 inverseJoinColumns=@JoinColumn(name="movie_id")
         )
         @JsonIgnore
-        private List<Movie> wishlist = new ArrayList<Movie>();
+        private Set<Movie> wishlist = new HashSet<>();
 
         @OneToMany(fetch = FetchType.LAZY,
                 mappedBy = "user",
@@ -69,6 +75,38 @@ public class User {
         )
         @JsonIgnore
         private Set<Comment> comments = new HashSet<>();
+
+        @ManyToMany
+        @JoinTable(name="subscription",
+                joinColumns=@JoinColumn(name="user_id_from"),
+                inverseJoinColumns=@JoinColumn(name="user_id_to")
+        )
+        @JsonIgnore
+        private Set<User> subscriptions = new HashSet<>();
+
+        @ManyToMany
+        @JoinTable(name="subscription",
+                joinColumns=@JoinColumn(name="user_id_to"),
+                inverseJoinColumns=@JoinColumn(name="user_id_from")
+        )
+        @JsonIgnore
+        private Set<User> subscribers = new HashSet<>();
+
+        @OneToMany(fetch = FetchType.LAZY,
+                mappedBy = "userFrom",
+                cascade = CascadeType.ALL,
+                orphanRemoval = true
+        )
+        @JsonIgnore
+        private List<Chat> chatMessagesSent = new ArrayList<>();
+
+        @OneToMany(fetch = FetchType.LAZY,
+                mappedBy = "userTo",
+                cascade = CascadeType.ALL,
+                orphanRemoval = true
+        )
+        @JsonIgnore
+        private List<Chat> chatMessagesReceived = new ArrayList<>();
 
         public User() {
         }
@@ -136,13 +174,6 @@ public class User {
                 this.role = role;
         }
 
-        public List<Movie> getWishlist() {
-                return wishlist;
-        }
-
-        public void setWishlist(List<Movie> wishlist) {
-                this.wishlist = wishlist;
-        }
 
         public Set<Comment> getComments() {
                 return comments;
@@ -152,16 +183,79 @@ public class User {
                 this.comments = comments;
         }
 
+        public Set<Movie> getWishlist() {
+                return wishlist;
+        }
+
+        public void setWishlist(Set<Movie> wishlist) {
+                this.wishlist = wishlist;
+        }
+
+        public Set<User> getSubscriptions() {
+                return subscriptions;
+        }
+
+        public void setSubscriptions(Set<User> subscriptions) {
+                this.subscriptions = subscriptions;
+        }
+
+        public Set<User> getSubscribers() {
+                return subscribers;
+        }
+
+        public void setSubscribers(Set<User> subscribers) {
+                this.subscribers = subscribers;
+        }
+
+        public List<Chat> getChatMessagesSent() {
+                return chatMessagesSent;
+        }
+
+        public void setChatMessagesSent(List<Chat> chatMessagesSent) {
+                this.chatMessagesSent = chatMessagesSent;
+        }
+
+        public List<Chat> getChatMessagesReceived() {
+                return chatMessagesReceived;
+        }
+
+        public void setChatMessagesReceived(List<Chat> chatMessagesReceived) {
+                this.chatMessagesReceived = chatMessagesReceived;
+        }
+
         /////
 
         public void addMovieToWishlist(Movie movie) {
 
                 if (wishlist == null) {
-                        wishlist = new ArrayList<Movie>();
+                        wishlist = new HashSet<Movie>();
                 }
                 wishlist.add(movie);
         }
 
+        public void addUserToSubscription(User user) {
+
+                if (subscriptions == null) {
+                        subscriptions = new HashSet<User>();
+                }
+                subscriptions.add(user);
+        }
+
+        public void addMessage(Chat message) {
+
+                if (chatMessagesSent == null) {
+                        chatMessagesSent = new ArrayList<Chat>();
+                }
+                chatMessagesSent.add(message);
+        }
+
+        public void addRateNotification(RateNotification rateNotification) {
+
+                if (notifications== null) {
+                        notifications = new ArrayList<Notification>();
+                }
+                notifications.add(rateNotification);
+        }
 
         @Override
         public boolean equals(Object o) {
@@ -176,5 +270,13 @@ public class User {
         @Override
         public int hashCode() {
                 return Objects.hash(id, username, email);
+        }
+
+        public List<Notification> getNotifications() {
+                return notifications;
+        }
+
+        public void setNotifications(List<Notification> notifications) {
+                this.notifications = notifications;
         }
 }

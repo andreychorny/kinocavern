@@ -30,6 +30,14 @@
                 maxlength="60"
                 #title="ngModel"
               />
+              <div class="form-group">
+                <label for="movie.description">Description</label>
+                <br>
+                <textarea name="description" [(ngModel)]="movie.description"
+                #description="ngModel" required rows = "5" cols = "60">
+                  description...
+                </textarea>
+              </div>
               <div class="alert-danger" *ngIf="f.submitted && title.invalid">
                 <div *ngIf="title.errors.required">Movie title is required</div>
                 <div *ngIf="title.errors.maxlength">

@@ -42,7 +42,8 @@ export class MovieService {
     const formData: FormData = new FormData();
     const title = movie.title;
     const year = movie.year;
-    const fullInfo = {title, year, genresIds, countriesIds, categoryId};
+    const description = movie.description;
+    const fullInfo = {title, year, description, genresIds, countriesIds, categoryId};
 
     formData.append('uploadFile', file);
     formData.append('info', new Blob([JSON.stringify(fullInfo)],

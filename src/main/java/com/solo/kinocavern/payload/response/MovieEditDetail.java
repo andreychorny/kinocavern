@@ -21,8 +21,9 @@ public class MovieEditDetail {
 
     private List<Genre> genres;
 
-
     private List<Comment> comments;
+
+    private String description;
 
     public MovieEditDetail(Movie movie) {
         this.id = movie.getId();
@@ -33,6 +34,7 @@ public class MovieEditDetail {
         this.countries = movie.getCountries();
         this.genres = movie.getGenres();
         this.comments = movie.getComments();
+        this.description = movie.getDescription();
     }
 
     public Long getId() {
@@ -97,5 +99,13 @@ public class MovieEditDetail {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

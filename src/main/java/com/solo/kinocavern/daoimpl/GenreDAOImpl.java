@@ -1,7 +1,6 @@
 package com.solo.kinocavern.daoimpl;
 
 import com.solo.kinocavern.dao.GenreDAO;
-import com.solo.kinocavern.entity.Category;
 import com.solo.kinocavern.entity.Genre;
 import org.hibernate.Session;
 import org.hibernate.query.Query;

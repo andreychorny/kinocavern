@@ -2,7 +2,6 @@ package com.solo.kinocavern.daoimpl;
 
 import com.solo.kinocavern.dao.CategoryDAO;
 import com.solo.kinocavern.entity.Category;
-import com.solo.kinocavern.entity.Movie;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;

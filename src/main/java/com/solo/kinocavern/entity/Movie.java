@@ -2,10 +2,12 @@ package com.solo.kinocavern.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.*;
+import javax.validation.constraints.Min;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="movie")
@@ -25,7 +27,13 @@ public class Movie {
     @Column(name="imageurl")
     private String imageUrl;
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+    @Column(name="description")
+    private String description;
+
+    @Column(name="avg_rating")
+    private Double averageRating;
+
+    @ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="category_id")
     private Category category;
@@ -63,6 +71,7 @@ public class Movie {
             CascadeType.DETACH, CascadeType.REFRESH},
             orphanRemoval = true
     )
+    @JsonIgnore
     private List<Comment> comments = new ArrayList<>();
 
 
@@ -70,12 +79,14 @@ public class Movie {
 
     }
 
-    public Movie(Long id, String title, int year, String imageUrl, Category category,
-                 List<Country> countries, List<Genre> genres) {
+
+    public Movie(Long id, String title, int year, String imageUrl, String description,
+                 Category category, List<Country> countries, List<Genre> genres) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.imageUrl = imageUrl;
+        this.description = description;
         this.category = category;
         this.countries = countries;
         this.genres = genres;
@@ -153,7 +164,23 @@ public class Movie {
         this.comments = comments;
     }
 
-/////////
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(Double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    /////////
 
     public void addGenre(Genre genre) {
 

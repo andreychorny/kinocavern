@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+
+  @Output() 
+  loginEvent = new EventEmitter();
 
   constructor(private authenticationService: AuthenticationService,
               private tokenStorage: TokenStorageService) { }

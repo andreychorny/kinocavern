@@ -1,12 +1,11 @@
 package com.solo.kinocavern.payload.request;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.List;
 
 public class MovieFormWrapper {
 
     private String title;
+    private String description;
     private Integer year;
     private List<Long> genresIds;
     private List<Long> countriesIds;
@@ -50,5 +49,13 @@ public class MovieFormWrapper {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

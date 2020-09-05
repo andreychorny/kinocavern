@@ -2,16 +2,21 @@ package com.solo.kinocavern.restcontroller;
 
 import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.dao.UserDAO;
-import com.solo.kinocavern.entity.*;
+import com.solo.kinocavern.entity.Comment;
+import com.solo.kinocavern.entity.Notification;
+import com.solo.kinocavern.entity.Rating;
+import com.solo.kinocavern.entity.User;
 import com.solo.kinocavern.payload.request.CommentFormWrapper;
 import com.solo.kinocavern.payload.request.RatingFormWrapper;
 import com.solo.kinocavern.payload.response.UserProfile;
+import com.solo.kinocavern.service.NotificationService;
 import com.solo.kinocavern.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -22,17 +27,13 @@ public class UserRestController {
     public UserService userService;
 
     @Autowired
-    public UserDAO userDAO;
-
-    @Autowired
-    private MovieDAO movieDAO;
+    public NotificationService notificationService;
 
     @GetMapping("/users/{userId}")
     public UserProfile getUserProfile(@PathVariable Long userId) {
 
         User user = userService.findById(userId);
-        UserProfile userProfile = new UserProfile(user.getId(),user.getUsername(),user.getRatings(),
-                user.getWishlist(),user.getComments());
+        UserProfile userProfile = new UserProfile(user);
         return userProfile;
     }
 
@@ -43,7 +44,6 @@ public class UserRestController {
         Long movieId = ratingForm.getMovieId();
         int rate = ratingForm.getRate();
         userService.addRating(request, movieId, rate);
-
         return null;
     }
 
@@ -64,11 +64,26 @@ public class UserRestController {
         Long commentParentId = commentFormWrapper.getCommentParentId();
 
         userService.addComment(request, movieId, content, commentParentId);
-        System.out.println(movieId);
-        System.out.println(content);
-        System.out.println(commentParentId);
 
         return null;
+    }
+
+    @PostMapping("/users/subscribeTo/{userId}")
+    public void subscribeTo(HttpServletRequest request, @PathVariable Long userId) {
+        User user = userService.findById(userId);
+        userService.subscribeTo(request, userId);
+    }
+
+    @GetMapping("/users/newNotifications")
+    public Boolean getIfUserHasNewNotification(HttpServletRequest request) {
+        Boolean result = userService.checkIfUserHasNewNotifications(request);
+        return result;
+    }
+
+    @GetMapping("/notifications")
+    public List<Notification> getNotifications(HttpServletRequest request) {
+        List<Notification> notifications = userService.loadNotificationsOfUser(request);
+        return notifications;
     }
 
 }

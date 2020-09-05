@@ -1,7 +1,8 @@
 package com.solo.kinocavern.restcontroller;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.solo.kinocavern.entity.*;
+import com.solo.kinocavern.entity.Movie;
+import com.solo.kinocavern.entity.Rating;
+import com.solo.kinocavern.entity.User;
 import com.solo.kinocavern.payload.request.MovieFormWrapper;
 import com.solo.kinocavern.payload.response.MovieDetail;
 import com.solo.kinocavern.payload.response.MovieEditDetail;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,25 +55,7 @@ public class MovieRestController {
 
     @GetMapping("/movies/{movieId}")
     public MovieDetail getMovieDetail(HttpServletRequest request, @PathVariable Long movieId) {
-
-        Movie movie = movieService.findById(movieId);
-        MovieDetail movieDetail = new MovieDetail(movie);
-        if(request.getHeader("Authorization")!=null){
-            User currentUser = userService.loadCurrentUser(request);
-            Rating searchRating = new Rating();
-            searchRating.setUser(currentUser);
-            searchRating.setMovie(movie);
-            int index = movie.getRatings().indexOf(searchRating);
-            if(index>=0){
-                Rating ratingOfLoggedUser = movie.getRatings().get(index);
-                movieDetail.setRating(ratingOfLoggedUser);
-            };
-            boolean movieWishlisted = currentUser.getWishlist().contains(movie);
-            movieDetail.setWishlisted(movieWishlisted);
-        }
-        if (movie == null) {
-            throw new RuntimeException("Movie id not found - " + movieId);
-        }
+        MovieDetail movieDetail = movieService.getMovieDetail(request, movieId);
         return movieDetail;
     }
 
@@ -119,10 +102,7 @@ public class MovieRestController {
     @DeleteMapping("/movies/{movieId}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteMovie(@PathVariable  Long movieId) {
-
         movieService.deleteById(movieId);
         return "Deleted movie id - " + movieId;
     }
-
-
 }

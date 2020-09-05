@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -27,6 +27,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { CommentsComponent } from './components/comments/comments.component';
 import { UserDirective } from './directives/user.directive';
+import { ChatSocketComponent } from './components/chat-socket/chat-socket.component';
+import { SocketService } from './services/socket.service';
+import { UserService } from './services/user.service';
+import { ToastrModule } from 'ngx-toastr';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
+import { NotificationsListComponent } from './components/notifications-list/notifications-list.component';
+import { NotificationService } from './services/notification.service';
 
 const routes = [
   { path: 'movielist', component: MovieListComponent },
@@ -36,6 +43,9 @@ const routes = [
   { path: 'admin/editMovie/:id', component: EditMovieComponent},
   { path: 'movie/:id', component: MovieDetailsComponent},
   { path: 'users/:id', component: UserProfileComponent},
+  { path: 'chat', component: ChatListComponent},
+  { path: 'chat/:id', component: ChatListComponent},
+  { path: 'notifications', component: NotificationsListComponent},
   { path: '', redirectTo: 'movielist', pathMatch: 'full' }];
 
 
@@ -57,6 +67,9 @@ const routes = [
     UserProfileComponent,
     CommentsComponent,
     UserDirective,
+    ChatSocketComponent,
+    ChatListComponent,
+    NotificationsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,12 +77,14 @@ const routes = [
     FormsModule,
     NgbModule,
     RouterModule.forRoot(routes),
+    ToastrModule.forRoot({ timeOut: 3000 }),
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatTabsModule,
     JwPaginationModule
   ],
-  providers: [MovieService, AuthenticationService, TokenStorageService, 
-    authInterceptorProviders],
+  providers: [MovieService, AuthenticationService, TokenStorageService, SocketService,
+    UserService, authInterceptorProviders, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

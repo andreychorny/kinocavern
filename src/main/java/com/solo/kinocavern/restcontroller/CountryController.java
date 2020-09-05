@@ -1,9 +1,6 @@
 package com.solo.kinocavern.restcontroller;
 
-import com.solo.kinocavern.dao.CountryDAO;
-import com.solo.kinocavern.dao.GenreDAO;
 import com.solo.kinocavern.entity.Country;
-import com.solo.kinocavern.entity.Genre;
 import com.solo.kinocavern.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

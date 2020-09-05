@@ -1,0 +1,30 @@
+<div class="container">
+    <h3 class=" text-center">Messaging</h3>
+    <div class="messaging row">
+          <div class="inbox_msg col-4">
+            <div class="inbox_people">
+              <div class="headind_srch">
+                <div class="recent_heading">
+                  <h4>Recent</h4>
+                </div>
+              </div>
+              <div class="inbox_chat">
+                <div class="chat_list" *ngFor="let user of usersChats">
+                  <div class="chat_people">
+                    <a routerLink="/chat/{{user.id}}">
+                      <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                      <div class="chat_ib">
+                        <h4>{{user.username}}</h4>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-8">
+          <app-chat-socket *ngIf="userIdToChatWith != null && userIdToChatWith>0" 
+          [userToId]="userIdToChatWith"> </app-chat-socket>  
+        </div>
+    </div>
+</div>

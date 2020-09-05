@@ -3,11 +3,13 @@ package com.solo.kinocavern.serviceimpl;
 import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.entity.*;
 import com.solo.kinocavern.payload.request.MovieFormWrapper;
+import com.solo.kinocavern.payload.response.MovieDetail;
 import com.solo.kinocavern.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -40,6 +42,7 @@ public class MovieServiceImpl implements MovieService {
         Long id = (long) 0;
         String title = model.getTitle();
         int year = model.getYear();
+        String description = model.getDescription();
         List<Long> genresIds = model.getGenresIds();
         List<Long> countriesIds = model.getCountriesIds();
         Long categoryId = model.getCategoryId();
@@ -48,7 +51,7 @@ public class MovieServiceImpl implements MovieService {
         Category category = categoryService.findById(categoryId);
 
         // We generate image url after getting an ID from database, so for now it's null
-        Movie movie = new Movie(id, title, year, null, category, countries, genres);
+        Movie movie = new Movie(id, title, year, null, description, category, countries, genres);
         movie = this.save(movie);
 
         String imgUrl = "assets\\movies\\titleImg\\"+movie.getId()+movie.getTitle().trim()+".jpg";
@@ -73,6 +76,7 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<Movie> findAllByParams(int pageNumber, String orderBy, Long categoryId,
                                        Long genreId) {
+        if(orderBy == null) orderBy = "id";
         return movieDAO.findAllByParams(pageNumber, orderBy, categoryId, genreId);
     }
 
@@ -84,6 +88,31 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Movie findById(Long id) {
         return movieDAO.findById(id);
+    }
+
+    @Override
+    public MovieDetail getMovieDetail(HttpServletRequest request, Long movieId){
+        Movie movie = this.findById(movieId);
+        MovieDetail movieDetail = new MovieDetail(movie);
+
+        //load current User data according this movie if user is logged in
+        if(request.getHeader("Authorization")!=null){
+            User currentUser = userService.loadCurrentUser(request);
+            Rating searchRating = new Rating();
+            searchRating.setUser(currentUser);
+            searchRating.setMovie(movie);
+            int index = movie.getRatings().indexOf(searchRating);
+            if(index>=0){
+                Rating ratingOfLoggedUser = movie.getRatings().get(index);
+                movieDetail.setRating(ratingOfLoggedUser);
+            };
+            boolean movieWishlisted = currentUser.getWishlist().contains(movie);
+            movieDetail.setWishlisted(movieWishlisted);
+        }
+        if (movie == null) {
+            throw new RuntimeException("Movie id not found - " + movieId);
+        }
+        return movieDetail;
     }
 
     @Override
@@ -115,5 +144,10 @@ public class MovieServiceImpl implements MovieService {
     public void deleteImageFromDirectory(String imgUrl){
         File file = new File("angularfront\\src\\"+imgUrl);
         if (file!=null) file.delete();
+    }
+
+    @Override
+    public void updateAverageRating(Long movieId){
+        movieDAO.updateAverageRating(movieId);
     }
 }
