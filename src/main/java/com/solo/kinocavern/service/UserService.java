@@ -16,6 +16,8 @@ public interface UserService {
 
     public User findById(Long id);
 
+    void save(User user);
+
     public User loadCurrentUser(HttpServletRequest request);
 
     public void deleteRatingIfExist(Long movieId, User user);
@@ -37,4 +39,9 @@ public interface UserService {
     public List<Notification> loadNotificationsOfUser(HttpServletRequest request);
 
     public void deleteOldNotifications(User user, List<Notification> notifications);
+
+    Boolean usernameExists(String username);
+
+    Boolean emailExists(String email);
+
 }

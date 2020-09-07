@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   }
 
   initializeNotificationWebSocketConnection(){
-    const serverUrl = 'http://localhost:8080/notification';
+    const serverUrl = 'http://localhost:8080/socket';
     let ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
     let that = this;
@@ -63,6 +63,5 @@ export class HeaderComponent implements OnInit {
 
   notificationsViewed(){
     this.isNewNotifications = false;
-    console.log('!!OOOOOOO' + this.isNewNotifications);
   }
 }

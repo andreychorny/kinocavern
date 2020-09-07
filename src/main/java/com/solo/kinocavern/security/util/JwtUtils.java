@@ -22,10 +22,10 @@ public class JwtUtils {
 
     public String generateJwtToken(Authentication authentication) {
 
-        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-        Claims claims = Jwts.claims().setSubject(userPrincipal.getUsername());
-        claims.put("userId", userPrincipal.getId() + "");
+        Claims claims = Jwts.claims().setSubject(userDetails.getUsername());
+        claims.put("userId", userDetails.getId() + "");
 
         return Jwts.builder()
                 .setClaims(claims)

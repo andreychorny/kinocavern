@@ -55,6 +55,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void save(User user) {
+        userDAO.save(user);
+    }
+
+    @Override
     public void addRating(HttpServletRequest request, Long movieId, int rate){
         User currentUser = this.loadCurrentUser(request);
         Movie movie = movieService.findById(movieId);
@@ -164,6 +169,16 @@ public class UserServiceImpl implements UserService {
                     notifications.size());
             user.setNotifications(newestNotifications);
         }
+    }
+
+    @Override
+    public Boolean usernameExists(String username) {
+        return userDAO.usernameExists(username);
+    }
+
+    @Override
+    public Boolean emailExists(String email) {
+        return userDAO.emailExists(email);
     }
 
     private String parseJwt(HttpServletRequest request) {

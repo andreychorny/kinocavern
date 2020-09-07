@@ -11,6 +11,7 @@ import com.solo.kinocavern.payload.response.JwtResponse;
 import com.solo.kinocavern.payload.response.MessageResponse;
 import com.solo.kinocavern.security.service.UserDetailsImpl;
 import com.solo.kinocavern.security.util.JwtUtils;
+import com.solo.kinocavern.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,6 +34,9 @@ public class AuthenticationController {
 
     @Autowired
     UserDAO userDAO;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     RoleDAO roleDAO;
@@ -67,13 +71,13 @@ public class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userDAO.usernameExists(signUpRequest.getUsername())) {
+        if (userService.usernameExists(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        if (userDAO.emailExists(signUpRequest.getEmail())) {
+        if (userService.emailExists(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
@@ -92,7 +96,7 @@ public class AuthenticationController {
             role  = roleDAO.findByName(EnumRole.ROLE_USER);
         }
         user.setRole(role);
-        userDAO.save(user);
+        userService.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
