@@ -1,30 +1,27 @@
 <div class="row">
     <div class="col-sm-12">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">KinoCavern</a>
+        <a class="navbar-brand" routerLink="/">KinoCavern</a>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/movielist">Movie</a>
+              <a class="nav-link" routerLink="/movielist">Films</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" routerLink="/">Cartoons</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" routerLink="/">TV-series</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" routerLink="/">Cartoon-series</a>
             </li>
           </ul>
           <a class="nav-link" routerLink="/admin/addMovie" *appUserRole="'ROLE_ADMIN'">
             Add-movie</a>
-            <a class="nav-link" routerLink="/notifications" *appUser (click)="notificationsViewed()">
+            <a class="nav-link" routerLink="/notifications" *appUserLogged (click)="notificationsViewed()">
               <div *ngIf="!isNewNotifications">
                 <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-bell" fill="white" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z"/>
@@ -37,9 +34,9 @@
                 </svg>
               </div>
             </a>            
-            <a class="nav-link" routerLink="/chat" *appUser>
+            <a class="nav-link" routerLink="/chat" *appUserLogged>
              Chats</a>    
-          <a class="nav-link" routerLink="{{getUserProfile()}}" *appUser>
+          <a class="nav-link" routerLink="{{getUserProfile()}}" *appUserLogged>
             My-Profile</a>  
           <a class="nav-link" routerLink="/signin" 
             *ngIf="!tokenStorage.isTokenExist(); else loggedOut">Login</a>

@@ -1,4 +1,4 @@
-package com.solo.kinocavern.payload.response;
+package com.solo.kinocavern.dto.response;
 
 import com.solo.kinocavern.entity.Comment;
 import com.solo.kinocavern.entity.Movie;
@@ -6,7 +6,6 @@ import com.solo.kinocavern.entity.Rating;
 import com.solo.kinocavern.entity.User;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class UserProfile {

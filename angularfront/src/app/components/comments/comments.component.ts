@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-comments',
@@ -16,7 +17,8 @@ export class CommentsComponent implements OnInit {
 
   commentContent: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, 
+              private commentService: CommentService) { }
 
   ngOnInit(): void {
     console.log(this.comments);
@@ -40,5 +42,9 @@ export class CommentsComponent implements OnInit {
     );
   }
 
-
+  onDelete(commentId: number){
+    if (confirm("Are you sure to delete comment?")){
+      this.commentService.deleteComment(commentId).subscribe();
+    }
+  }
 }

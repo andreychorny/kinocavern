@@ -1,6 +1,6 @@
 
 <div class="container">
-	<form method="POST" id="commentForm" *appUser>
+	<form method="POST" id="commentForm" *appUserLogged>
 		<div class="form-group">
             <input name="content" [(ngModel)]="commentContent" id="content" class="form-control"
 			 placeholder="Enter Comment" rows="5" required />
@@ -13,8 +13,12 @@
 				<div class="card"> 
 					<div class="card-header text-white bg-primary mb-3">By 
 						<a class="text-white" routerLink="/users/{{ comment.user.id }}">
-						<b>{{comment.user.username}}</b>
+						<b>{{comment.user.username}}</b>     
 						</a>
+						<button *appUserRole="'ROLE_ADMIN'" type="button"
+						class="btn btn-danger float-right" 
+						(click)="onDelete(comment.id)">
+						Delete</button>
 					</div>
 					<div class="card-body"> 
 						{{comment.content}}
@@ -25,6 +29,10 @@
 								<a class="text-white" routerLink="/users/{{ childComment.user.id }}">
 								<b>{{childComment.user.username}}</b>
 								</a>
+								<button *appUserRole="'ROLE_ADMIN'" type="button"
+								class="btn btn-danger float-right" 
+								(click)="onDelete(childComment.id)">
+								Delete</button>
 							</div>
 							<div class="card-body"> {{childComment.content}}</div>
 						</div>	

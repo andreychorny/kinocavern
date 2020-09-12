@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from '../../services/token-storage.service';
 import { Subscription } from 'rxjs';
 
@@ -19,7 +19,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   pageOfWishlistedMovies: Array<any>;
 
   constructor(private userService: UserService,
-              private route: ActivatedRoute, private tokenStorage: TokenStorageService) { }
+              private route: ActivatedRoute, private router: Router,
+               private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
     this.userSubscription = this.route.params.subscribe(
@@ -77,5 +78,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         window.location.reload();
       }
     );
+  }
+
+  onDelete(){
+    if (confirm("Are you sure to delete "+name)){
+      this.userService.deleteUser(this.user.id).subscribe((data) => {
+        this.router.navigateByUrl('/movielist');
+        });
+    }
   }
 }

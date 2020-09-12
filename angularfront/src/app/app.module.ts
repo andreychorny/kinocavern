@@ -26,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { CommentsComponent } from './components/comments/comments.component';
-import { UserDirective } from './directives/user.directive';
+import { UserLoggedDirective } from './directives/user-logged.directive';
 import { ChatSocketComponent } from './components/chat-socket/chat-socket.component';
 import { SocketService } from './services/socket.service';
 import { UserService } from './services/user.service';
@@ -34,6 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { NotificationsListComponent } from './components/notifications-list/notifications-list.component';
 import { NotificationService } from './services/notification.service';
+import { CommentService } from './services/comment.service';
 
 const routes = [
   { path: 'movielist', component: MovieListComponent },
@@ -66,7 +67,7 @@ const routes = [
     UserRateComponent,
     UserProfileComponent,
     CommentsComponent,
-    UserDirective,
+    UserLoggedDirective,
     ChatSocketComponent,
     ChatListComponent,
     NotificationsListComponent,
@@ -84,7 +85,7 @@ const routes = [
     JwPaginationModule
   ],
   providers: [MovieService, AuthenticationService, TokenStorageService, SocketService,
-    UserService, authInterceptorProviders, NotificationService],
+    UserService, authInterceptorProviders, NotificationService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

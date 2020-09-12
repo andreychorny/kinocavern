@@ -43,7 +43,6 @@ export class ChatSocketComponent implements OnChanges {
     console.log(this.userToId);
     this.socketService.getChatHistory(this.userToId).subscribe(
       data => {
-        console.log(data);
         this.messages = data;
       }
     );
@@ -70,10 +69,8 @@ export class ChatSocketComponent implements OnChanges {
 
   openUserSocket() {
     this.isCustomSocketOpened = true;
-    console.log('try to open');
     this.stompClient.subscribe("/socket-publisher/"+ this.tokenStorage.getUser().id,
                                                             (message) => {
-                                    console.log('YES' + message);
                                     this.handleResult(message);
     });
   }
@@ -81,9 +78,7 @@ export class ChatSocketComponent implements OnChanges {
   handleResult(message){
     if (message.body) {
       let messageResult: Message = JSON.parse(message.body);
-      console.log(messageResult);
       this.messages.push(messageResult);
-      console.log('IN HANDLE RESULT');
       this.toastr.success("new message recieved", null, {
         'timeOut': 3000
       });

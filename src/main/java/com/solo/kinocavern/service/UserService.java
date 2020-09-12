@@ -18,6 +18,8 @@ public interface UserService {
 
     void save(User user);
 
+    void deleteById(Long id);
+
     public User loadCurrentUser(HttpServletRequest request);
 
     public void deleteRatingIfExist(Long movieId, User user);

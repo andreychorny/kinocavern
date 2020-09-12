@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class SocketService {
 
-  url: string = "http://localhost:8080/api/chat";
+  url: string = "http://localhost:8080/api/chats";
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class SocketService {
   }
 
   getChatHistory(userToId: number){
-    const getUrl = this.url + '/socket/' + userToId;
+    const getUrl = this.url +'/' +userToId;
     return this.http.get(getUrl).pipe(map(
       (data: any) => {
         data = data.map(chatUnit => {
@@ -38,7 +38,7 @@ export class SocketService {
   }
 
   post(data: string, userToId: number) {
-    const postUrl = this.url + '/socket/' + userToId;
+    const postUrl = this.url  + '/' + userToId;
     return this.http.post(postUrl, data);
   }
 }

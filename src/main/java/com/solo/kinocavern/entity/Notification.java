@@ -1,13 +1,14 @@
 package com.solo.kinocavern.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.solo.kinocavern.service.NotificationService;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "notification")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Notification {
+public abstract class Notification implements NotificationService {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

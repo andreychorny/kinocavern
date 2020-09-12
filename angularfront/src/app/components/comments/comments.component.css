@@ -7,6 +7,6 @@
 .dropdown-toggle::after {
     display:none;
 }
-.btn{
+.btn-primary{
     margin-top: 10px;
 }

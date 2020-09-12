@@ -16,7 +16,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0625405-b10b-4f1a-9e65-a6bfb9e38906" name="Default Changelist" comment="chat and notification systems using sockets">
+    <list default="true" id="a0625405-b10b-4f1a-9e65-a6bfb9e38906" name="Default Changelist" comment="fixed some mistakes in socket">
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/directives/user-logged.directive.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/services/comment.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularfront/src/app/services/comment.service.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/0Blade Runner 2049.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/0Mindhunter.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/0The House That Jack Built.jpg" afterDir="false" />
@@ -26,15 +29,54 @@
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/140Ford v Ferrari.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/141NEW NEW MOVIE.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/angularfront/src/assets/movies/titleImg/61bzxgs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/CommentRestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/angularfront/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/add-movie/add-movie.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/admin/edit-movie/edit-movie.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/admin/edit-movie/edit-movie.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/chat-socket/chat-socket.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/chat-socket/chat-socket.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/comments/comments.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/comments/comments.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/comments/comments.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/comments/comments.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/comments/comments.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/comments/comments.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/user-profile/user-profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/user-profile/user-profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/components/user-profile/user-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/components/user-profile/user-profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/directives/user.directive.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/directives/user.directive.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/directives/user.directive.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/services/movie.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/services/movie.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/services/socket.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/services/socket.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularfront/src/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularfront/src/app/services/user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/configuration/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/configuration/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dao/CommentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dao/CommentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/CommentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/CommentDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/daoimpl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/entity/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/request/CommentFormWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dto/request/CommentFormWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/payload/request/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/request/MovieFormWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dto/request/MovieFormWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/request/RatingFormWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dto/request/RatingFormWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/request/SignupRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/payload/request/SignupRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/response/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/payload/response/JwtResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/response/MessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/payload/response/MessageResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/response/MovieDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dto/response/MovieDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/response/MovieEditDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dto/response/MovieEditDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/payload/response/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/dto/response/UserProfile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/util/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/security/util/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/MovieRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/MovieRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/SocketRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/SocketRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/restcontroller/UserRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/service/MovieService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/serviceimpl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/serviceimpl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/serviceimpl/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/serviceimpl/MovieServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/serviceimpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solo/kinocavern/serviceimpl/UserServiceImpl.java" afterDir="false" />
     </list>
     <list id="28a0202e-e527-444d-8e15-6f1df05fbd5d" name="Revert &quot;set up initial state of project&quot;" comment="Revert &quot;set up initial state of project&quot;&#10;&#10;This reverts commit c195af23" />
@@ -59,6 +101,11 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\andre\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="vmOptionsForImporter" value="-Xmx768m" />
@@ -78,18 +125,46 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.solo.kinocavern" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.KinocavernApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ABC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.solo.kinocavern.ABC" />
+      <module name="kinocavern" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.solo.kinocavern.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="KinocavernApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.solo.kinocavern.KinocavernApplication" />
       <module name="kinocavern" />
@@ -103,12 +178,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="KinocavernApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="kinocavern" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.solo.kinocavern.KinocavernApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.KinocavernApplication" />
+        <item itemvalue="Application.ABC" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration>C:\Users\andre\AppData\Roaming\Subversion</configuration>
   </component>
@@ -119,6 +203,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593468278893</updated>
+      <workItem from="1599872691474" duration="1867000" />
+      <workItem from="1599936783304" duration="635000" />
     </task>
     <task id="LOCAL-00001" summary="set up initial state of project">
       <created>1593800651607</created>
@@ -211,8 +297,18 @@
       <option name="project" value="LOCAL" />
       <updated>1599336660049</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fixed some mistakes in socket">
+      <created>1599445211092</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1599445211092</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -256,7 +352,9 @@
     <MESSAGE value="Made profile" />
     <MESSAGE value="added comment system, fixed search" />
     <MESSAGE value="chat and notification systems using sockets" />
-    <option name="LAST_COMMIT_MESSAGE" value="chat and notification systems using sockets" />
+    <MESSAGE value="fixed some mistake in socket" />
+    <MESSAGE value="fixed some mistakes in socket" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some mistakes in socket" />
   </component>
   <component name="WindowStateProjectService">
     <state x="535" y="117" key="#Auto_Import" timestamp="1595195089814">
@@ -271,18 +369,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1593873202228" />
-    <state x="878" y="137" key="#com.intellij.ide.util.MemberChooser" timestamp="1599424228882">
+    <state x="878" y="137" key="#com.intellij.ide.util.MemberChooser" timestamp="1599842618019">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="878" y="137" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1599424228882" />
+    <state x="878" y="137" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1599842618019" />
     <state x="381" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1593967101488">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="381" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1593967101488" />
-    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1596581937378">
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1599842025798">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1596581937378" />
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1599842025798" />
     <state x="566" y="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1593905916808">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -311,38 +409,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="492" y="115" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593807655558" />
-    <state width="1493" height="215" key="GridCell.Tab.0.bottom" timestamp="1599336860049">
+    <state width="1493" height="215" key="GridCell.Tab.0.bottom" timestamp="1599865235970">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599336860049" />
-    <state width="1493" height="215" key="GridCell.Tab.0.center" timestamp="1599336860049">
+    <state width="1493" height="215" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599865235970" />
+    <state width="1493" height="215" key="GridCell.Tab.0.center" timestamp="1599865235969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599336860049" />
-    <state width="1493" height="215" key="GridCell.Tab.0.left" timestamp="1599336860049">
+    <state width="1493" height="215" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599865235969" />
+    <state width="1493" height="215" key="GridCell.Tab.0.left" timestamp="1599865235969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599336860049" />
-    <state width="1493" height="215" key="GridCell.Tab.0.right" timestamp="1599336860049">
+    <state width="1493" height="215" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599865235969" />
+    <state width="1493" height="215" key="GridCell.Tab.0.right" timestamp="1599865235969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599336860049" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1593906321018">
+    <state width="1493" height="215" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599865235969" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1599506975965">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593906321018" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1593906321018">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599506975965" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1599506975965">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593906321018" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1593906321018">
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1599506975965" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1599506975965">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593906321018" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1593906321018">
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1599506975965" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1599506975965">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593906321018" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1599506975965" />
     <state x="299" y="67" key="Maven.ArtifactSearchDialog" timestamp="1597094233144">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -355,14 +453,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="407" y="174" width="760" height="476" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1593805142824" />
-    <state x="277" y="0" key="SettingsEditor" timestamp="1593873552665">
+    <state x="277" y="0" key="SettingsEditor" timestamp="1599871836164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593873552665" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1599336671445">
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599871836164" />
+    <state x="490" y="154" width="540" height="524" key="StructurePopup" timestamp="1599867488580">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599336671445" />
+    <state x="490" y="154" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1599867488580" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1599445216822">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599445216822" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1595728417879">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -375,6 +477,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1593882901764" />
+    <state x="209" y="73" key="new project wizard" timestamp="1599506490078">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="209" y="73" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1599506490078" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1595189059430">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

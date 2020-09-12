@@ -1,8 +1,8 @@
 package com.solo.kinocavern.service;
 
 import com.solo.kinocavern.entity.Movie;
-import com.solo.kinocavern.payload.request.MovieFormWrapper;
-import com.solo.kinocavern.payload.response.MovieDetail;
+import com.solo.kinocavern.dto.request.MovieFormWrapper;
+import com.solo.kinocavern.dto.response.MovieDetail;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;

@@ -20,4 +20,6 @@ public interface UserDAO {
 
     void save(User user);
 
+    void deleteById(Long id);
+
 }

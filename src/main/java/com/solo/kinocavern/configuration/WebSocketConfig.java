@@ -20,8 +20,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.setApplicationDestinationPrefixes("/socket-subscriber", "/notification-subscriber")
-                .enableSimpleBroker("/socket-publisher", "/notification-publisher");
+        registry.enableSimpleBroker("/socket-publisher", "/notification-publisher");
     }
 
 }

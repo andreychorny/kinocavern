@@ -7,4 +7,6 @@ public interface CommentDAO {
 
     public void save(Comment comment);
 
+    public void deleteById(Long id);
+
 }

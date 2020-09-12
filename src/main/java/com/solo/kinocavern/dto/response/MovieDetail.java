@@ -1,11 +1,10 @@
-package com.solo.kinocavern.payload.response;
+package com.solo.kinocavern.dto.response;
 
 import com.solo.kinocavern.entity.*;
 
 import java.util.List;
 
-public class MovieEditDetail {
-
+public class MovieDetail {
 
     private Long id;
 
@@ -21,11 +20,16 @@ public class MovieEditDetail {
 
     private List<Genre> genres;
 
-    private List<Comment> comments;
-
     private String description;
 
-    public MovieEditDetail(Movie movie) {
+    private Rating rating;
+
+    private List<Comment> comments;
+
+    private boolean isWishlisted;
+
+
+    public MovieDetail(Movie movie) {
         this.id = movie.getId();
         this.title = movie.getTitle();
         this.year = movie.getYear();
@@ -33,8 +37,8 @@ public class MovieEditDetail {
         this.category = movie.getCategory();
         this.countries = movie.getCountries();
         this.genres = movie.getGenres();
-        this.comments = movie.getComments();
         this.description = movie.getDescription();
+        this.comments = movie.getComments();
     }
 
     public Long getId() {
@@ -93,12 +97,28 @@ public class MovieEditDetail {
         this.genres = genres;
     }
 
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
+    }
+
     public List<Comment> getComments() {
         return comments;
     }
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public boolean isWishlisted() {
+        return isWishlisted;
+    }
+
+    public void setWishlisted(boolean wishlisted) {
+        isWishlisted = wishlisted;
     }
 
     public String getDescription() {

@@ -33,10 +33,11 @@
                     <button class="btn btn-info"
                     (click)="onButtonSubscribeClick()">Chat</button>
                 </a>
+
+                <button *appUserRole="'ROLE_ADMIN'" type="button"
+                class="btn btn-danger" (click)="onDelete()">
+                Delete</button>
             </div>
-
-
-
         </div>
         <div class="col-9 movieInfo">
             <mat-tab-group>

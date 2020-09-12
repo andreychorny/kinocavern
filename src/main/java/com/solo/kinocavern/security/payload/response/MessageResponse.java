@@ -1,4 +1,4 @@
-package com.solo.kinocavern.payload.response;
+package com.solo.kinocavern.security.payload.response;
 
 public class MessageResponse {
 

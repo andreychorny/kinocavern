@@ -2,9 +2,9 @@ import { Directive, TemplateRef,  ViewContainerRef, OnInit } from '@angular/core
 import { TokenStorageService } from '../services/token-storage.service';
 
 @Directive({
-  selector: '[appUser]'
+  selector: '[appUserLogged]'
 })
-export class UserDirective implements OnInit {
+export class UserLoggedDirective implements OnInit {
 
   constructor(private templateRef: TemplateRef<any>,
     private tokenStorage: TokenStorageService,
@@ -12,13 +12,10 @@ export class UserDirective implements OnInit {
 
   ngOnInit() {
     const hasAccess = this.tokenStorage.isTokenExist();
-
     if (hasAccess) {
         this.viewContainer.createEmbeddedView(this.templateRef);
     } else {
         this.viewContainer.clear();
     }
   }
-
-
 }

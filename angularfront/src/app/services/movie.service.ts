@@ -54,14 +54,14 @@ export class MovieService {
   }
 
   getMovie(theMovieId: number): Observable<Movie> {
-    // need to build URL based on product id
+    
     const movieUrl = `${this.baseUrl}/${theMovieId}`;
     return this.httpClient.get<Movie>(movieUrl);
   }
 
   
   getEditMovie(theMovieId: number): Observable<Movie> {
-    // need to build URL based on product id
+    
     const movieUrl = `${this.baseUrl}/edit/${theMovieId}`;
     return this.httpClient.get<Movie>(movieUrl);
   }
@@ -69,7 +69,6 @@ export class MovieService {
 
   deleteMovie(theMovieId: number): Observable<any>{
     const movieUrl = `${this.baseUrl}/${theMovieId}`;
-
     return this.httpClient.delete(movieUrl, { responseType: 'text' });
   }
 

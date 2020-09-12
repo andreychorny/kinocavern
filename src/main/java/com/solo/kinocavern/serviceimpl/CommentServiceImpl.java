@@ -17,4 +17,9 @@ public class CommentServiceImpl implements CommentService {
         commentDAO.save(comment);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        commentDAO.deleteById(id);
+    }
+
 }

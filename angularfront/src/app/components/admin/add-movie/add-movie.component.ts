@@ -15,7 +15,7 @@ export class AddMovieComponent implements OnInit {
 
   movie: Movie = new Movie();
   categories: Category[];
-  selectedCategoryId: number = 1;
+  selectedCategoryId = 1;
 
   isSuccessful = false;
   isPostFailed = false;

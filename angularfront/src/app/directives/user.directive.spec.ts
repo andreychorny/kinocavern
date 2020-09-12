@@ -1,8 +1,8 @@
-import { UserDirective } from './user.directive';
+import { UserLoggedDirective } from './user-logged.directive';
 
-describe('UserDirective', () => {
+describe('UserLoggedDirective', () => {
   it('should create an instance', () => {
-    const directive = new UserDirective();
+    const directive = new UserLoggedDirective();
     expect(directive).toBeTruthy();
   });
 });

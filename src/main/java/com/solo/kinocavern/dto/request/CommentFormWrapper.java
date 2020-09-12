@@ -1,4 +1,4 @@
-package com.solo.kinocavern.payload.request;
+package com.solo.kinocavern.dto.request;
 
 public class CommentFormWrapper {
 

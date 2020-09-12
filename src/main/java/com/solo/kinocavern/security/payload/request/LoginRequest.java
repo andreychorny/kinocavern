@@ -1,4 +1,4 @@
-package com.solo.kinocavern.payload.request;
+package com.solo.kinocavern.security.payload.request;
 
 import javax.validation.constraints.NotBlank;
 

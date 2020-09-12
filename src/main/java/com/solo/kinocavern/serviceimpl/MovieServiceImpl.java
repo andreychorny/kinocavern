@@ -2,8 +2,8 @@ package com.solo.kinocavern.serviceimpl;
 
 import com.solo.kinocavern.dao.MovieDAO;
 import com.solo.kinocavern.entity.*;
-import com.solo.kinocavern.payload.request.MovieFormWrapper;
-import com.solo.kinocavern.payload.response.MovieDetail;
+import com.solo.kinocavern.dto.request.MovieFormWrapper;
+import com.solo.kinocavern.dto.response.MovieDetail;
 import com.solo.kinocavern.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

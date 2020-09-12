@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,11 +21,11 @@ import java.util.*;
 @CrossOrigin(origins = "http://localhost:4200")
 public class SocketRestController {
 
-
     @Autowired
     private UserService userService;
 
-    @GetMapping("/chat")
+    @GetMapping("/chats")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public Set<User> loadChats(HttpServletRequest request){
 
         User currentUser = userService.loadCurrentUser(request);
@@ -40,7 +41,8 @@ public class SocketRestController {
         return userChats;
     }
 
-    @GetMapping("/chat/socket/{userToId}")
+    @GetMapping("/chats/{userToId}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public List<Chat> loadChatHistory(HttpServletRequest request,
                                            @PathVariable Long userToId){
         User currentUser = userService.loadCurrentUser(request);
@@ -53,7 +55,8 @@ public class SocketRestController {
     }
 
 
-    @PostMapping("/chat/socket/{userToId}")
+    @PostMapping("/chats/{userToId}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> postMessage(HttpServletRequest request,
                                            @PathVariable Long userToId,
                                            @RequestBody String message){

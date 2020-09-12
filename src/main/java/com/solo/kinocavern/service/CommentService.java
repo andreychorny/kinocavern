@@ -7,4 +7,6 @@ public interface CommentService {
 
     public void save(Comment comment);
 
+    public void deleteById(Long id);
+
 }

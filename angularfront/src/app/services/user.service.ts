@@ -21,8 +21,13 @@ export class UserService {
     return this.httpClient.get<any>(userUrl);
   }
 
+  deleteUser(theUserId: number): Observable<any>{
+    const userUrl = `${this.baseUrl}/${theUserId}`;
+    return this.httpClient.delete(userUrl);
+  }
+
   postRating(movieId: number, rate: number): Observable<any>{
-    const url = this.baseUrl + '/rate';
+    const url = 'http://localhost:8080/api/rates';
     const rating = {
       movieId,
       rate
@@ -31,12 +36,12 @@ export class UserService {
   }
 
   postToWishlist(movieId: number): Observable<any>{
-    const url = this.baseUrl + '/wishlist';
+    const url = 'http://localhost:8080/api/wishlists';
     return this.httpClient.post(url, movieId, httpOptions);
   }
 
   postComment(movieId: number, content: string, commentParentId: number): Observable<any>{
-    const url = this.baseUrl + '/comment';
+    const url = 'http://localhost:8080/api/comments';
     const comment = {
       movieId,
       content,

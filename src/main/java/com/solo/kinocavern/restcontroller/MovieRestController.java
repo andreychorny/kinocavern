@@ -1,11 +1,9 @@
 package com.solo.kinocavern.restcontroller;
 
 import com.solo.kinocavern.entity.Movie;
-import com.solo.kinocavern.entity.Rating;
-import com.solo.kinocavern.entity.User;
-import com.solo.kinocavern.payload.request.MovieFormWrapper;
-import com.solo.kinocavern.payload.response.MovieDetail;
-import com.solo.kinocavern.payload.response.MovieEditDetail;
+import com.solo.kinocavern.dto.request.MovieFormWrapper;
+import com.solo.kinocavern.dto.response.MovieDetail;
+import com.solo.kinocavern.dto.response.MovieEditDetail;
 import com.solo.kinocavern.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
