@@ -19,7 +19,7 @@ import java.util.*;
 @RestController
 @RequestMapping(value = "/api")
 @CrossOrigin(origins = "http://localhost:4200")
-public class SocketRestController {
+public class ChatRestController {
 
     @Autowired
     private UserService userService;
