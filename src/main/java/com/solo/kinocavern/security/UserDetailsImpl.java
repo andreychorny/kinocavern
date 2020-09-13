@@ -1,4 +1,4 @@
-package com.solo.kinocavern.security.service;
+package com.solo.kinocavern.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.solo.kinocavern.entity.User;

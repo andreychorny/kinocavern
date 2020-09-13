@@ -1,6 +1,6 @@
 package com.solo.kinocavern.security.util;
 
-import com.solo.kinocavern.security.service.UserDetailsImpl;
+import com.solo.kinocavern.security.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

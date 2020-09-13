@@ -9,7 +9,7 @@ import com.solo.kinocavern.security.payload.request.LoginRequest;
 import com.solo.kinocavern.security.payload.request.SignupRequest;
 import com.solo.kinocavern.security.payload.response.JwtResponse;
 import com.solo.kinocavern.security.payload.response.MessageResponse;
-import com.solo.kinocavern.security.service.UserDetailsImpl;
+import com.solo.kinocavern.security.UserDetailsImpl;
 import com.solo.kinocavern.security.util.JwtUtils;
 import com.solo.kinocavern.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

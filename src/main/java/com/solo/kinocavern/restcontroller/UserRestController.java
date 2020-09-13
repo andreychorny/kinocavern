@@ -56,8 +56,6 @@ public class UserRestController {
         return null;
     }
 
-
-
     @DeleteMapping("/users/{userId}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteUser(@PathVariable Long userId)  {

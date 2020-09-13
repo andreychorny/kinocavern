@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "notification")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Notification implements NotificationService {
+public abstract class Notification {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
