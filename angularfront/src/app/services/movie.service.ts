@@ -5,9 +5,7 @@ import { map } from 'rxjs/operators';
 import { Movie } from '../common/movie';
 import { Genre } from '../common/genre';
 import { Country } from '../common/country';
-import { createOfflineCompileUrlResolver } from '@angular/compiler';
 import { Category } from '../common/category';
-import { StringMapWithRename } from '@angular/compiler/src/compiler_facade_interface';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -27,7 +25,7 @@ export class MovieService {
     let params = new HttpParams();
     params = params.set("page", String(pageNumber));
     params = params.set("orderBy", selectedOrder);
-    if (categoryId != null) { params = params.set("categoryId", String(categoryId)); }
+    if (categoryId != null && categoryId != 0) { params = params.set("categoryId", String(categoryId)); }
     if (genreId != null) { params = params.set("genreId", String(genreId)); }
     return this.httpClient.get<Movie[]>(this.baseUrl, {params});
   }

@@ -17,7 +17,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username){
         User user = userDAO.findByUsername(username);
-
         return UserDetailsImpl.build(user);
     }
 

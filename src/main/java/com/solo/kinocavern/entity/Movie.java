@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name="movie")
@@ -56,10 +54,19 @@ public class Movie {
     )
     private List<Genre> genres;
 
+    @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinTable(
+            name="wishlist",
+            joinColumns=@JoinColumn(name="movie_id"),
+            inverseJoinColumns=@JoinColumn(name="user_id")
+    )
+    @JsonIgnore
+    private Set<User> usersWhichWishlisted = new HashSet<>();
+
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "movie",
-            cascade = {CascadeType.PERSIST,
-                    CascadeType.DETACH, CascadeType.REFRESH},
+            cascade = {CascadeType.ALL},
             orphanRemoval = true
     )
     @JsonBackReference
@@ -67,8 +74,7 @@ public class Movie {
 
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "movie",
-            cascade = {CascadeType.PERSIST,
-            CascadeType.DETACH, CascadeType.REFRESH},
+            cascade = {CascadeType.ALL},
             orphanRemoval = true
     )
     @JsonIgnore

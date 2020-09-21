@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Movie } from '../../common/movie';
 import { MovieService } from '../../services/movie.service';
 import { GenreService } from 'src/app/services/genre.service';
 import { Genre } from 'src/app/common/genre';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -15,7 +16,6 @@ export class MovieListComponent implements OnInit {
   amountOfElements: number;
   selectedOrder = 'id ASC';
   selectedGenreId = null;
-  selectedCategoryId = null;
 
   pageNumber = 1;
   pageSize = 12;
@@ -23,17 +23,24 @@ export class MovieListComponent implements OnInit {
   genres: Genre[];
 
   constructor(private movieService: MovieService,
-              private genreService: GenreService) { }
+              private genreService: GenreService,
+              private route: ActivatedRoute) {
+                this.route.params.subscribe(params => {
+                  this.ngOnInit();
+                });
+               }
 
   ngOnInit(): void {
     this.loadListOfMovies();
     this.loadListOfGenres();
   }
 
+
   loadListOfMovies(){
+    const categoryId: number = +this.route.snapshot.paramMap.get('categoryId');
     const pageNumber = this.pageNumber - 1;
     this.movieService.getMovieList(pageNumber, this.selectedOrder,
-                                  this.selectedCategoryId, this.selectedGenreId).subscribe(
+        categoryId, this.selectedGenreId).subscribe(
       data => {
         this.movies = data["movies"];
         this.amountOfElements = data["amountOfElements"];

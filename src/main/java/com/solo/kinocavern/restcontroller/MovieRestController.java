@@ -59,7 +59,6 @@ public class MovieRestController {
 
     @PostMapping
     @RequestMapping(value = "/movies", consumes = "multipart/form-data")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Movie addMovie(@RequestPart("uploadFile") MultipartFile file,
                           @RequestPart("info") MovieFormWrapper model) throws IOException {
 

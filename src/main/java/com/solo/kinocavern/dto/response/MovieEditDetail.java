@@ -21,8 +21,6 @@ public class MovieEditDetail {
 
     private List<Genre> genres;
 
-    private List<Comment> comments;
-
     private String description;
 
     public MovieEditDetail(Movie movie) {
@@ -33,7 +31,6 @@ public class MovieEditDetail {
         this.category = movie.getCategory();
         this.countries = movie.getCountries();
         this.genres = movie.getGenres();
-        this.comments = movie.getComments();
         this.description = movie.getDescription();
     }
 
@@ -91,14 +88,6 @@ public class MovieEditDetail {
 
     public void setGenres(List<Genre> genres) {
         this.genres = genres;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
     }
 
     public String getDescription() {

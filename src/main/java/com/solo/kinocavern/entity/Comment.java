@@ -1,6 +1,7 @@
 package com.solo.kinocavern.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -27,7 +28,7 @@ public class Comment {
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "movie_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonIgnore
     private Movie movie;
 
     public Comment() {

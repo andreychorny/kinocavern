@@ -37,6 +37,7 @@ import { NotificationService } from './services/notification.service';
 import { CommentService } from './services/comment.service';
 
 const routes = [
+  { path: 'movielist/:categoryId', component: MovieListComponent },
   { path: 'movielist', component: MovieListComponent },
   { path: 'signin', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },

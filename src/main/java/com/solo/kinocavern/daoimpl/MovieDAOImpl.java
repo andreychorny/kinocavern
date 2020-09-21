@@ -116,12 +116,8 @@ public class MovieDAOImpl implements MovieDAO {
     @Override
     @Transactional
     public void deleteById(Long idDelete) {
-
-        Session currentSession = entityManager.unwrap(Session.class);
-        Query theQuery = currentSession.createQuery(
-                        "delete from Movie where id=:idDel");
-        theQuery.setParameter("idDel", idDelete);
-        theQuery.executeUpdate();
+        Movie movie = entityManager.find(Movie.class, idDelete);
+        entityManager.remove(movie);
     }
 
 //    @Override

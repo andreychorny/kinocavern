@@ -28,6 +28,8 @@ public class MovieDetail {
 
     private boolean isWishlisted;
 
+    private Double averageRating;
+
 
     public MovieDetail(Movie movie) {
         this.id = movie.getId();
@@ -39,6 +41,7 @@ public class MovieDetail {
         this.genres = movie.getGenres();
         this.description = movie.getDescription();
         this.comments = movie.getComments();
+        this.averageRating = movie.getAverageRating();
     }
 
     public Long getId() {
@@ -127,5 +130,13 @@ public class MovieDetail {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(Double averageRating) {
+        this.averageRating = averageRating;
     }
 }

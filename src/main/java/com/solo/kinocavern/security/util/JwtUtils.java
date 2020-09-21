@@ -21,7 +21,6 @@ public class JwtUtils {
     private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {
-
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
         Claims claims = Jwts.claims().setSubject(userDetails.getUsername());

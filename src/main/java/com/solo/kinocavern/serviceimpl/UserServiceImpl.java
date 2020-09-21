@@ -68,6 +68,7 @@ public class UserServiceImpl implements UserService {
     public void addRating(HttpServletRequest request, Long movieId, int rate){
         User currentUser = this.loadCurrentUser(request);
         Movie movie = movieService.findById(movieId);
+        System.out.println("addRating");
         deleteRatingIfExist(movieId, currentUser);
         deleteWishlistIfExist(movieId, currentUser);
         Rating rating = new Rating(rate, currentUser, movie);
@@ -108,6 +109,7 @@ public class UserServiceImpl implements UserService {
             userDAO.save(currentUser);
             currentUser.getWishlist().size();
         }
+        movieService.updateAverageRating(movieId);
     }
 
     @Override
@@ -159,7 +161,6 @@ public class UserServiceImpl implements UserService {
         for(Notification notification: notifications){
             notification.setUnseen(false);
         }
-        System.out.println(notifications.get(0).isUnseen());
         deleteOldNotifications(user, notifications);
         userDAO.save(user);
         return notifications;
@@ -197,7 +198,7 @@ public class UserServiceImpl implements UserService {
     public void deleteRatingIfExist(Long movieId, User user) {
         Set<Rating> allRatings = user.getRatings();
         for (Rating rating : allRatings) {
-            if (rating.getMovieId() == movieId) {
+            if (rating.getMovieId().equals(movieId)) {
                 user.getRatings().remove(rating);
                 //update user's ratings
                 userDAO.save(user);
@@ -209,7 +210,7 @@ public class UserServiceImpl implements UserService {
     public boolean deleteWishlistIfExist(Long movieId, User user) {
         Set<Movie> wishlistedMovies = user.getWishlist();
         for (Movie movie : wishlistedMovies) {
-            if (movie.getId() == movieId) {
+            if (movie.getId().equals(movieId)) {
                 user.getWishlist().remove(movie);
                 //update user's ratings
                 userDAO.save(user);
